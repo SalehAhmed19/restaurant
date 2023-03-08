@@ -30,9 +30,10 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      {/* <Typography variant="h6" sx={{ my: 2 }}>
         MUI
-      </Typography>
+      </Typography> */}
+      <img className="mr-20 w-40 p-5" src={logo} alt="" />
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -63,7 +64,7 @@ function DrawerAppBar(props) {
           padding: { lg: "20px 100px" },
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -80,14 +81,16 @@ function DrawerAppBar(props) {
           >
             MUI
           </Typography> */}
-          <img className="mr-20" src={logo} alt="" />
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#000", margin: "0 20px" }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
+          <div className="flex justify-between items-center w-full px-5">
+            <img className="lg:mr-20 w-20 lg:w-[200px]" src={logo} alt="" />
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {navItems.map((item) => (
+                <Button key={item} sx={{ color: "#000", margin: "0 20px" }}>
+                  {item}
+                </Button>
+              ))}
+            </Box>
+          </div>
           <div>
             <div className="h-14 w-14 bg-[#F2F3F5] flex justify-center items-center rounded-full">
               <AiOutlineShopping className="text-2xl" />

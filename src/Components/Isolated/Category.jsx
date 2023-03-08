@@ -2,7 +2,7 @@ import React from "react";
 
 const Category = ({ category }) => {
   return (
-    <div className="bg-[#F9FAFC] p-5 flex">
+    <div className="bg-[#F9FAFC] p-5 flex flex-col lg:flex-row">
       <div className="p-5 relative">
         <img className="w-14 z-20" src={category.img} alt="" />
         <div className="w-7 h-7 bg-[#F5C332] rounded-md"></div>

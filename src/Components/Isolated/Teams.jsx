@@ -56,7 +56,7 @@ const Teams = () => {
     },
   ];
   return (
-    <div className="p-20">
+    <div className="lg:p-20 p-5">
       <Fade down>
         <h2 className="text-4xl font-bold ">They will cook for you</h2>
         <p className="text-[#6F6F87] mt-10 mb-14">

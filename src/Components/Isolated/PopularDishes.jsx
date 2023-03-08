@@ -44,8 +44,8 @@ const PopularDishes = () => {
     },
   ];
   return (
-    <div className="mx-20">
-      <div className="flex justify-between items-center">
+    <div className="lg:mx-20 mx-5">
+      <div className="flex flex-col lg:flex-row justify-between items-center my-5">
         <Fade left>
           <div>
             <h2 className="text-4xl font-bold">Most popular dishes</h2>

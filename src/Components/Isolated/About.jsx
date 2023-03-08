@@ -24,11 +24,11 @@ const About = () => {
     },
   ];
   return (
-    <div className="flex ml-20 pr-20 bg-[#F9FAFC]">
+    <div className="flex flex-col lg:flex-row lg:ml-20 lg:pr-20 bg-[#F9FAFC]">
       <div className="relative">
         <Zoom>
           <img className="w-[500px]" src={interior} alt="" />
-          <div className="p-5 bg-[#fff] inline-block absolute z-20 bottom-0 -right-7 shadow-lg">
+          <div className="p-5 bg-[#fff] inline-block absolute z-20 bottom-0 lg:-right-7 shadow-lg">
             <div
               style={{ border: "2px dashed #F2F3F5" }}
               className="flex flex-col justify-center items-center p-5"
@@ -46,7 +46,7 @@ const About = () => {
           </div>
         </Zoom>
       </div>
-      <div className="p-10">
+      <div className="lg:px-10 py-10 p-5">
         <h2 className="font-bold text-4xl">
           We are doing more than <br /> you expect
         </h2>

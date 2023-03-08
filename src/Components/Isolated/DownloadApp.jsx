@@ -8,7 +8,7 @@ import appstore from "../../Assets/appStore.svg";
 
 const DownloadApp = () => {
   return (
-    <div className="flex justify-between p-20 bg-[#F9FAFC]">
+    <div className="flex flex-col lg:flex-row justify-between p-5 lg:p-20 bg-[#F9FAFC]">
       <Fade left>
         <div>
           <h2 className="text-6xl font-bold">
@@ -43,7 +43,7 @@ const DownloadApp = () => {
           </div>
         </Zoom>
         <Zoom right>
-          <img className="w-[700px]" src={phones} alt="" />
+          <img className="w-[700px] my-5" src={phones} alt="" />
         </Zoom>
       </div>
     </div>

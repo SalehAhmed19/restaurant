@@ -37,9 +37,9 @@ const Categories = () => {
   ];
 
   return (
-    <div className="p-20">
+    <div className="lg:p-20 p-5">
       <Fade left>
-        <div className="flex items-center justify-between my-5">
+        <div className="flex flex-col lg:flex-row items-center justify-between my-5">
           <div>
             <h2 className="text-4xl font-bold">What do you like today?</h2>
             <p className="my-5 text-[#6F6F87]">

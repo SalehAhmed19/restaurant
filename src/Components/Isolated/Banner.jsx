@@ -11,7 +11,7 @@ const Banner = () => {
   return (
     <div
       style={{ background: `url(${bg})`, backgroundSize: "cover" }}
-      className="pt-28 lg:px-24 h-screen"
+      className="pt-28 lg:px-24 px-5 h-screen"
     >
       <Fade down>
         <p className="bg-[#F2F3F5] inline-block p-1 text-sm">Hi, new friend!</p>
@@ -27,10 +27,10 @@ const Banner = () => {
               quo modi.
             </p>
             <div className="flex">
-              <button className="flex items-center px-6 bg-[#F5C332] py-2">
+              <button className="flex items-center lg:px-6 px-3 bg-[#F5C332] lg:py-2">
                 <img className="mr-3" src={menu} alt="" /> Our Menu
               </button>
-              <button className="flex items-center px-6 bg-[#fff] py-2 mx-5">
+              <button className="flex items-center lg:px-6 px-3 bg-[#fff] lg:py-2 mx-5">
                 <div className="bg-[#F2F3F5] h-10 w-10 rounded-full flex justify-center items-center mr-4">
                   <BsArrowUpRightCircle className="text-xl" />
                 </div>{" "}
@@ -39,7 +39,7 @@ const Banner = () => {
             </div>
           </div>
         </Fade>
-        <div className="relative">
+        <div className="relative hidden lg:block">
           <Zoom forever={true}>
             <div className="flex justify-between absolute">
               <CiPizza className="text-6xl text-[#F2F3F5]" />
