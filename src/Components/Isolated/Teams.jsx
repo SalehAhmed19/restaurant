@@ -5,13 +5,55 @@ import team2 from "../../Assets/team-2.png";
 import team3 from "../../Assets/team-3.png";
 import team4 from "../../Assets/team-4.png";
 import teamBg from "../../Assets/team-bg.png";
+import {
+  AiFillFacebook,
+  AiFillYoutube,
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+} from "react-icons/ai";
 
 const Teams = () => {
   const teams = [
-    { _id: 1, name: "Paul Trueman", designation: "Chef", img: team1 },
-    { _id: 2, name: "Emma Newman", designation: "Assistant chef", img: team2 },
-    { _id: 3, name: "Oscar Oldman", designation: "Chef", img: team3 },
-    { _id: 4, name: "Ed Freeman", designation: "Assistant chef", img: team4 },
+    {
+      _id: 1,
+      name: "Paul Trueman",
+      designation: "Chef",
+      img: team1,
+      twitter: "",
+      instagram: "",
+      facebook: "",
+      youtube: "",
+    },
+    {
+      _id: 2,
+      name: "Emma Newman",
+      designation: "Assistant chef",
+      img: team2,
+      twitter: "",
+      instagram: "",
+      facebook: "",
+      youtube: "",
+    },
+    {
+      _id: 3,
+      name: "Oscar Oldman",
+      designation: "Chef",
+      img: team3,
+      twitter: "",
+      instagram: "",
+      facebook: "",
+      youtube: "",
+    },
+    {
+      _id: 4,
+      name: "Ed Freeman",
+      designation: "Assistant chef",
+      img: team4,
+      twitter: "",
+      instagram: "",
+      facebook: "",
+      youtube: "",
+    },
   ];
   return (
     <div className="p-20">
@@ -40,6 +82,20 @@ const Teams = () => {
                   <p className="text-center text-[#6F6F87]">
                     {team.designation}
                   </p>
+                  <div className="flex justify-center my-5">
+                    <a href={team.twitter}>
+                      <AiOutlineTwitter className="mx-2" />{" "}
+                    </a>
+                    <a href={team.instagram}>
+                      <AiOutlineInstagram className="mx-2" />{" "}
+                    </a>
+                    <a href={team.facebook}>
+                      <AiFillFacebook className="mx-2" />{" "}
+                    </a>
+                    <a href={team.youtube}>
+                      <AiFillYoutube className="mx-2" />
+                    </a>
+                  </div>
                 </Fade>
               </div>
             </div>
