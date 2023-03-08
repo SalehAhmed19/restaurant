@@ -1,5 +1,5 @@
 import React from "react";
-import { Zoom } from "react-reveal";
+import { Fade, Zoom } from "react-reveal";
 import menu1 from "../../Assets/menu-1.jpg";
 import menu2 from "../../Assets/menu-2.jpg";
 import menu3 from "../../Assets/menu-3.jpg";
@@ -46,13 +46,15 @@ const PopularDishes = () => {
   return (
     <div className="mx-20">
       <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-4xl font-bold">Most popular dishes</h2>
-          <p className="my-10 text-[#6F6F87]">
-            Consectetur numquam poro nemo veniam <br /> eligendi rem adipisci
-            quo modi.
-          </p>
-        </div>
+        <Fade left>
+          <div>
+            <h2 className="text-4xl font-bold">Most popular dishes</h2>
+            <p className="my-10 text-[#6F6F87]">
+              Consectetur numquam poro nemo veniam <br /> eligendi rem adipisci
+              quo modi.
+            </p>
+          </div>
+        </Fade>
         <Link to="/full-menu">
           <button className="flex items-center px-6 bg-[#F5C332] py-3">
             <img className="mr-3" src={menu} alt="" /> Full Menu
