@@ -1,6 +1,5 @@
 import React from "react";
 import girl from "../../Assets/girl.png";
-import { MdRestaurantMenu } from "react-icons/md";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { CiPizza, CiBurger } from "react-icons/ci";
 import { GiCakeSlice } from "react-icons/gi";

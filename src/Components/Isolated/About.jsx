@@ -24,7 +24,7 @@ const About = () => {
     },
   ];
   return (
-    <div className="flex ml-20 pr-20 bg-[#F9FAFC] pb-20">
+    <div className="flex ml-20 pr-20 bg-[#F9FAFC]">
       <div className="relative">
         <Zoom>
           <img className="w-[500px]" src={interior} alt="" />
