@@ -32,7 +32,7 @@ const Teams = () => {
                   backgroundSize: "cover",
                 }}
               >
-                <img className="w-46" src={team.img} alt="" />
+                <img src={team.img} alt="" />
               </div>
               <div className="my-5">
                 <Fade up>
