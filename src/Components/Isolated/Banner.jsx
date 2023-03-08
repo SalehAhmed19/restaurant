@@ -4,8 +4,9 @@ import { MdRestaurantMenu } from "react-icons/md";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { CiPizza, CiBurger } from "react-icons/ci";
 import { GiCakeSlice } from "react-icons/gi";
-import { Bounce, Fade, Zoom } from "react-reveal";
+import { Fade, Zoom } from "react-reveal";
 import bg from "../../Assets/bg.png";
+import menu from "../../Assets/menu.svg";
 
 const Banner = () => {
   return (
@@ -27,10 +28,10 @@ const Banner = () => {
               quo modi.
             </p>
             <div className="flex">
-              <button className="flex items-center px-6 bg-[#F5C332] py-3">
-                <MdRestaurantMenu className="text-xl mr-4" /> Our Menu
+              <button className="flex items-center px-6 bg-[#F5C332] py-2">
+                <img className="mr-3" src={menu} alt="" /> Our Menu
               </button>
-              <button className="flex items-center px-6 bg-[#fff] py-3 mx-5">
+              <button className="flex items-center px-6 bg-[#fff] py-2 mx-5">
                 <div className="bg-[#F2F3F5] h-10 w-10 rounded-full flex justify-center items-center mr-4">
                   <BsArrowUpRightCircle className="text-xl" />
                 </div>{" "}
