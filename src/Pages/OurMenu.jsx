@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dessert1 from "../Assets/dessert-1.jpeg";
 import dessert2 from "../Assets/dessert-2.jpeg";
 import dessert3 from "../Assets/dessert-3.jpeg";
@@ -228,6 +228,7 @@ const OurMenu = () => {
       },
     ],
   ];
+
   return (
     <div>
       <Fade left>
@@ -235,7 +236,7 @@ const OurMenu = () => {
           <h2 className="text-4xl font-bold">Our Menu</h2>
         </div>
       </Fade>
-      <div className="mx-20">
+      <div className="lg:mx-20 mx-5">
         <Fade up>
           <h2 className="text-3xl font-bold mt-10">Dessert</h2>
           <p className="my-5 text-[#6F6F87]">

@@ -29,7 +29,7 @@ const Banner = () => {
             </p>
             <div className="flex">
               <Link to="/our-menu">
-                <button className="flex items-center lg:px-6 px-3 bg-[#F5C332] lg:py-2">
+                <button className="flex items-center lg:px-6 px-3 bg-[#F5C332] lg:py-3">
                   <img className="mr-3" src={menu} alt="" /> Our Menu
                 </button>
               </Link>
