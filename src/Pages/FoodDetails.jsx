@@ -1,6 +1,6 @@
 import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Zoom } from "react-reveal";
+import { Fade, Zoom } from "react-reveal";
 import { useParams } from "react-router-dom";
 import { TiMinus, TiPlus } from "react-icons/ti";
 import { BsCartCheck } from "react-icons/bs";
@@ -40,32 +40,39 @@ const FoodDetails = ({ dish }) => {
           <img className="w-96 rounded-md" src={food.img} alt="" />
         </Zoom>
       </div>
-      <div className="mx-5">
-        <h2 className="text-4xl font-bold">{food.name}</h2>
-        <p className="text-[#6F6F87] my-5">{food.des}</p>
-        <h4 className="text-3xl mb-5 font-bold">
-          <span className="font-normal text-sm">$</span>
-          {food.price}
-        </h4>
-        <Rating
-          className="mb-5"
-          name="read-only"
-          value={food.ratings}
-          readOnly
-        />
-        <div>
-          <button onClick={handleIncrement} className="bg-[#F7C531] py-3 px-5">
-            <TiPlus className="text-xl" />
-          </button>
-          <button
-            onClick={handleDecrement}
-            className="bg-[#F7C531] py-3 px-5 border-l border-[#F78627]"
-          >
-            <TiMinus className="text-xl" />
-          </button>
+      <Fade up>
+        <div className="mx-5">
+          <h2 className="text-4xl font-bold">{food.name}</h2>
+          <p className="text-[#6F6F87] my-5">{food.des}</p>
+          <h4 className="text-3xl mb-5 font-bold">
+            <span className="font-normal text-sm">$</span>
+            {food.price}
+          </h4>
+          <Rating
+            className="mb-5"
+            name="read-only"
+            value={food.ratings}
+            readOnly
+          />
+          <div>
+            <button
+              onClick={handleIncrement}
+              className="bg-[#F7C531] py-3 px-5"
+            >
+              <TiPlus className="text-xl" />
+            </button>
+            <button
+              onClick={handleDecrement}
+              className="bg-[#F7C531] py-3 px-5 border-l border-[#F78627]"
+            >
+              <TiMinus className="text-xl" />
+            </button>
+          </div>
         </div>
-      </div>
-      <AddCart total={total} quantity={quantity} food={food} />
+      </Fade>
+      <Fade down>
+        <AddCart total={total} quantity={quantity} food={food} />
+      </Fade>
     </div>
   );
 };
