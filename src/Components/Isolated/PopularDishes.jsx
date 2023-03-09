@@ -55,7 +55,7 @@ const PopularDishes = () => {
             </p>
           </div>
         </Fade>
-        <Link to="/full-menu">
+        <Link to="/our-menu">
           <button className="flex items-center px-6 bg-[#F5C332] py-3">
             <img className="mr-3" src={menu} alt="" /> Full Menu
           </button>

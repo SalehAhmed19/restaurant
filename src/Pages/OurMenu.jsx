@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import dessert1 from "../Assets/dessert-1.jpeg";
 import dessert2 from "../Assets/dessert-2.jpeg";
 import dessert3 from "../Assets/dessert-3.jpeg";
@@ -26,208 +26,15 @@ import main11 from "../Assets/main-dishes-11.jpeg";
 import DishCard from "../Components/Isolated/DishCard";
 import Offer from "../Components/Isolated/Offer";
 import { Fade, Zoom } from "react-reveal";
+import useDesserts from "../Hooks/useDesserts";
+import useDrinks from "../Hooks/useDrinks";
+import useMainDishes from "../Hooks/useMainDishes";
+import { Link } from "react-router-dom";
 
 const OurMenu = () => {
-  const dishes = [
-    [
-      {
-        _id: 1,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert1,
-      },
-      {
-        _id: 2,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert2,
-      },
-      {
-        _id: 3,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert3,
-      },
-      {
-        _id: 4,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert4,
-      },
-      {
-        _id: 6,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert5,
-      },
-      {
-        _id: 6,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert6,
-      },
-      {
-        _id: 7,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: dessert7,
-      },
-    ],
-    [
-      {
-        _id: 1,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: drinks1,
-      },
-      {
-        _id: 2,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: drinks2,
-      },
-      {
-        _id: 3,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: drinks3,
-      },
-      {
-        _id: 4,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: drinks4,
-      },
-      {
-        _id: 5,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: drinks5,
-      },
-      {
-        _id: 6,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: drinks6,
-      },
-    ],
-    [
-      {
-        _id: 1,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main1,
-      },
-      {
-        _id: 2,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main2,
-      },
-      {
-        _id: 3,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main3,
-      },
-      {
-        _id: 4,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main4,
-      },
-      {
-        _id: 5,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main5,
-      },
-      {
-        _id: 6,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main6,
-      },
-      {
-        _id: 7,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main7,
-      },
-      {
-        _id: 8,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main8,
-      },
-      {
-        _id: 9,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main9,
-      },
-      {
-        _id: 10,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main10,
-      },
-      {
-        _id: 11,
-        name: "Chevrefrit au miel",
-        des: "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
-        price: 14,
-        ratings: 4,
-        img: main11,
-      },
-    ],
-  ];
+  const [desserts] = useDesserts();
+  const [drinks] = useDrinks();
+  const [dishes] = useMainDishes();
 
   return (
     <div>
@@ -245,9 +52,11 @@ const OurMenu = () => {
           </p>
         </Fade>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-7">
-          {dishes[0].map((dish) => (
+          {desserts.map((dish) => (
             <Zoom>
-              <DishCard key={dish._id} dish={dish} />
+              <Link to={`/our-menu/${dish._id}`}>
+                <DishCard key={dish._id} dish={dish} />
+              </Link>
             </Zoom>
           ))}
         </div>
@@ -261,9 +70,11 @@ const OurMenu = () => {
           </p>
         </Fade>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-7">
-          {dishes[1].map((dish) => (
+          {drinks.map((dish) => (
             <Zoom>
-              <DishCard key={dish._id} dish={dish} />
+              <Link to={`/our-menu/${dish._id}`}>
+                <DishCard key={dish._id} dish={dish} />
+              </Link>
             </Zoom>
           ))}
         </div>
@@ -277,9 +88,11 @@ const OurMenu = () => {
           </p>
         </Fade>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-7">
-          {dishes[2].map((dish) => (
+          {dishes.map((dish) => (
             <Zoom>
-              <DishCard key={dish._id} dish={dish} />
+              <Link to={`/our-menu/${dish._id}`}>
+                <DishCard key={dish._id} dish={dish} />
+              </Link>
             </Zoom>
           ))}
         </div>

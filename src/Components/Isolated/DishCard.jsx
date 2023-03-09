@@ -1,8 +1,14 @@
 import { Rating } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const DishCard = ({ dish }) => {
+  // const navigate = useNavigate();
+  // const handleNavigate = () => {
+  //   navigate(`/our-menu/${dish._id}`);
+  // };
   return (
+    // <button onClick={handleNavigate}>
     <div className="cursor-pointer">
       <img src={dish.img} alt="" />
       <div className="flex justify-between items-center bg-[#F2F3F5]">
@@ -19,6 +25,7 @@ const DishCard = ({ dish }) => {
         <Rating name="read-only" value={dish.ratings} readOnly />
       </div>
     </div>
+    // </button>
   );
 };
 

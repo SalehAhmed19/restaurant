@@ -47,9 +47,11 @@ const Categories = () => {
               quo modi.
             </p>
           </div>
-          <button className="flex items-center px-6 bg-[#F5C332] py-2">
-            <BsArrowUpRightCircle className="text-xl mr-3" /> Go shopping now
-          </button>
+          <Link to="/our-menu">
+            <button className="flex items-center px-6 bg-[#F5C332] py-2">
+              <BsArrowUpRightCircle className="text-xl mr-3" /> Go shopping now
+            </button>
+          </Link>
         </div>
       </Fade>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
