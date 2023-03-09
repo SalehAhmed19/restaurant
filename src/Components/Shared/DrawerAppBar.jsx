@@ -16,6 +16,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import logo from "../../Assets/logo.svg";
 import { AiOutlineShopping } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = ["Home", "Menu", "Shop", "Contact"];
@@ -92,9 +93,11 @@ function DrawerAppBar(props) {
             </Box>
           </div>
           <div>
-            <div className="h-14 w-14 bg-[#F2F3F5] flex justify-center items-center rounded-full">
-              <AiOutlineShopping className="text-2xl" />
-            </div>
+            <Link to="/cart">
+              <div className="h-14 w-14 bg-[#F2F3F5] flex justify-center items-center rounded-full">
+                <AiOutlineShopping className="text-2xl" />
+              </div>
+            </Link>
           </div>
         </Toolbar>
       </AppBar>
