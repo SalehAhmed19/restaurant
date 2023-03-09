@@ -4,6 +4,7 @@ import CategoryMenu from "./Components/Isolated/CategoryMenu";
 import DrawerAppBar from "./Components/Shared/DrawerAppBar";
 import Footer from "./Components/Shared/Footer";
 import Home from "./Pages/Home";
+import OurMenu from "./Pages/OurMenu";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <DrawerAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/our-menu" element={<OurMenu />} />
         <Route path="/:name" element={<CategoryMenu />} />
       </Routes>
       <Footer />

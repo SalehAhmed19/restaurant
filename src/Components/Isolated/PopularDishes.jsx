@@ -4,7 +4,7 @@ import menu1 from "../../Assets/menu-1.jpg";
 import menu2 from "../../Assets/menu-2.jpg";
 import menu3 from "../../Assets/menu-3.jpg";
 import menu4 from "../../Assets/menu-4.jpg";
-import PopularDishCard from "./PopularDishCard";
+import DishCard from "./DishCard";
 import menu from "../../Assets/menu.svg";
 import { Link } from "react-router-dom";
 
@@ -64,7 +64,7 @@ const PopularDishes = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-7 ">
         {dishes.map((dish) => (
           <Zoom>
-            <PopularDishCard key={dish._id} dish={dish} />
+            <DishCard key={dish._id} dish={dish} />
           </Zoom>
         ))}
       </div>

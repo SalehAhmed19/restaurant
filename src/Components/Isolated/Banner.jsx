@@ -6,6 +6,7 @@ import { GiCakeSlice } from "react-icons/gi";
 import { Fade, Zoom } from "react-reveal";
 import bg from "../../Assets/bg.png";
 import menu from "../../Assets/menu.svg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -27,9 +28,11 @@ const Banner = () => {
               quo modi.
             </p>
             <div className="flex">
-              <button className="flex items-center lg:px-6 px-3 bg-[#F5C332] lg:py-2">
-                <img className="mr-3" src={menu} alt="" /> Our Menu
-              </button>
+              <Link to="/our-menu">
+                <button className="flex items-center lg:px-6 px-3 bg-[#F5C332] lg:py-2">
+                  <img className="mr-3" src={menu} alt="" /> Our Menu
+                </button>
+              </Link>
               <button className="flex items-center lg:px-6 px-3 bg-[#fff] lg:py-2 mx-5">
                 <div className="bg-[#F2F3F5] h-10 w-10 rounded-full flex justify-center items-center mr-4">
                   <BsArrowUpRightCircle className="text-xl" />

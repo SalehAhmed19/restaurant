@@ -1,7 +1,7 @@
 import { Rating } from "@mui/material";
 import React from "react";
 
-const PopularDishCard = ({ dish }) => {
+const DishCard = ({ dish }) => {
   return (
     <div className="cursor-pointer">
       <img src={dish.img} alt="" />
@@ -22,4 +22,4 @@ const PopularDishCard = ({ dish }) => {
   );
 };
 
-export default PopularDishCard;
+export default DishCard;
