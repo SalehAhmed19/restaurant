@@ -77,6 +77,15 @@ const Register = () => {
               required
               size="small"
             />
+            <div className="flex justify-between my-3">
+              <p className="text-sm">Forgot Password</p>
+              <p className="text-sm">
+                Already hav an account?{" "}
+                <Link to="/login" className="text-[#F7C531] cursor-pointer">
+                  Login Now
+                </Link>
+              </p>
+            </div>
             <button
               className="bg-[#F7C531] px-5 py-3 w-full my-5"
               type="submit"
@@ -84,16 +93,8 @@ const Register = () => {
               Login
             </button>
           </form>
-          <div className="flex justify-between">
-            <p className="text-sm">Forgot Password</p>
-            <p className="text-sm">
-              Already hav an account?{" "}
-              <Link to="/login" className="text-[#F7C531] cursor-pointer">
-                Login Now
-              </Link>
-            </p>
-          </div>
           <div>
+            <div className="h-1 w-full bg-[#64646541]"></div>
             <button
               className="bg-[#000] text-white px-5 py-3 w-full my-5 text-2xl"
               type="submit"

@@ -43,6 +43,18 @@ const Login = () => {
               required
               size="small"
             />
+            <div className="flex justify-between my-3">
+              <p className="text-sm">Forgot Password</p>
+              <p className="text-sm">
+                New to Starbelly?{" "}
+                <Link
+                  to="/registration"
+                  className="text-[#F7C531] cursor-pointer"
+                >
+                  Register Now
+                </Link>
+              </p>
+            </div>
             <button
               className="bg-[#F7C531] px-5 py-3 w-full my-5"
               type="submit"
@@ -50,19 +62,8 @@ const Login = () => {
               Login
             </button>
           </form>
-          <div className="flex justify-between">
-            <p className="text-sm">Forgot Password</p>
-            <p className="text-sm">
-              New to Starbelly?{" "}
-              <Link
-                to="/registration"
-                className="text-[#F7C531] cursor-pointer"
-              >
-                Register Now
-              </Link>
-            </p>
-          </div>
           <div>
+            <div className="h-1 w-full bg-[#64646541]"></div>
             <button
               className="bg-[#000] text-white px-5 py-3 w-full my-5 text-2xl"
               type="submit"
