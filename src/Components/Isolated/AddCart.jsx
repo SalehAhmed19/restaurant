@@ -4,7 +4,7 @@ import { MdOutlinePayment } from "react-icons/md";
 
 const AddCart = ({ total, food, quantity }) => {
   return (
-    <div className="bg-[#F9FAFC]">
+    <div className="bg-[#F9FAFC] my-5">
       <div className="bg-[#F7C531] p-3">
         <h3 className="text-2xl font-bold text-right">Add to cart</h3>
       </div>
@@ -19,13 +19,13 @@ const AddCart = ({ total, food, quantity }) => {
           <span className="font-normal text-sm">$</span>
           {total}
         </h4>
-        <div className="flex">
-          <button className="bg-[#F7C531] px-5 py-3 mx-2 flex justify-between items-center">
-            <BsCartCheck className="mr-3" />
+        <div className="flex flex-col lg:flex-row">
+          <button className="bg-[#F7C531] px-5 py-3 m-2 flex justify-between items-center">
+            <BsCartCheck className="lg:mr-3" />
             Add to Cart
           </button>
-          <button className="bg-[#000] text-[#fff] px-5 py-3 mx-2 flex justify-between items-center">
-            <MdOutlinePayment className="mr-3" />
+          <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
+            <MdOutlinePayment className="lg:mr-3" />
             Proceed Payment
           </button>
         </div>

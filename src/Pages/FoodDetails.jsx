@@ -7,7 +7,7 @@ import { BsCartCheck } from "react-icons/bs";
 import { MdOutlinePayment } from "react-icons/md";
 import AddCart from "../Components/Isolated/AddCart";
 
-const FoodDetails = ({ dish }) => {
+const FoodDetails = () => {
   const { id } = useParams();
   const [food, setFood] = useState({});
   useEffect(() => {
