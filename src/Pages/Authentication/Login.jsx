@@ -75,7 +75,7 @@ const Login = () => {
               </p>
             </div>
             <input
-              className="bg-[#F7C531] px-5 py-3 w-full my-5"
+              className="bg-[#F7C531] px-5 py-3 w-full my-5 cursor-pointer"
               value="LOGIN"
               type="submit"
             />
