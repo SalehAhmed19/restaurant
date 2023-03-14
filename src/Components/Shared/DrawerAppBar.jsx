@@ -12,12 +12,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import logo from "../../Assets/logo.svg";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
 
 const drawerWidth = 240;
 const navItems = ["Home", "Menu", "Shop", "Contact"];
@@ -51,6 +52,14 @@ function DrawerAppBar(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  }));
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -94,9 +103,21 @@ function DrawerAppBar(props) {
             </Box>
           </div>
           <div className="flex">
-            <Link to="/cart">
+            {/* <Link to="/cart">
               <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full">
                 <AiOutlineShopping className="text-2xl" />
+              </div>
+            </Link> */}
+            <Link to="/cart">
+              <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full">
+                <IconButton
+                  className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full"
+                  aria-label="cart"
+                >
+                  <StyledBadge badgeContent={4} color="secondary">
+                    <AiOutlineShopping />
+                  </StyledBadge>
+                </IconButton>
               </div>
             </Link>
             <Link to="/login">

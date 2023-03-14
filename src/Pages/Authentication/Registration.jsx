@@ -1,11 +1,29 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
-import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import SignInWithGoogle from "./SignInWithGoogle";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await console.log("Success");
+  };
+
   return (
     <div className="mt-28 flex justify-between mx-20 items-center">
       <div className="flex">
@@ -22,18 +40,19 @@ const Register = () => {
       </div>
       <Fade right>
         <div className="bg-[#F9FAFC] w-1/3 p-5">
-          <form action="">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
+              {...register("name", { required: true })}
               className="w-full"
               id="filled-basic"
               label="Your Name"
               variant="outlined"
-              name="name"
               type="text"
               required
               size="small"
             />
             <TextField
+              {...register("email", { required: true })}
               sx={{ marginTop: "20px" }}
               className="w-full"
               id="filled-basic"
@@ -41,32 +60,33 @@ const Register = () => {
               variant="outlined"
               name="email"
               type="email"
-              required
+              require
               size="small"
             />
             <TextField
+              {...register("phone", { required: true })}
               sx={{ marginTop: "20px" }}
               className="w-full"
               id="filled-basic"
               label="Phone"
               variant="outlined"
-              name="phone"
               type="text"
               required
               size="small"
             />
             <TextField
+              {...register("address", { required: true })}
               sx={{ marginTop: "20px" }}
               className="w-full"
               id="filled-basic"
               label="Address"
               variant="outlined"
-              name="address"
               type="text"
               required
               size="small"
             />
             <TextField
+              {...register("password", { required: true })}
               sx={{ marginTop: "20px" }}
               className="w-full"
               id="filled-basic"
@@ -86,21 +106,15 @@ const Register = () => {
                 </Link>
               </p>
             </div>
-            <button
+            <input
               className="bg-[#F7C531] px-5 py-3 w-full my-5"
+              value="SIGN UP"
               type="submit"
-            >
-              Login
-            </button>
+            />
           </form>
           <div>
             <div className="h-1 w-full bg-[#64646541]"></div>
-            <button
-              className="bg-[#000] text-white px-5 py-3 w-full my-5 text-2xl"
-              type="submit"
-            >
-              <FcGoogle className="mx-auto" />
-            </button>
+            <SignInWithGoogle />
           </div>
         </div>
       </Fade>

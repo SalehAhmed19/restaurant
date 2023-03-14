@@ -2,10 +2,29 @@ import { TextField } from "@mui/material";
 import React from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import SignInWithGoogle from "./SignInWithGoogle";
+import { useForm } from "react-hook-form";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const onSubmit = async (data) => {
+    await signInWithEmailAndPassword(data.email, data.password);
+    if (user) {
+      await console.log("Success");
+    }
+  };
   return (
     <div className="mt-28 flex justify-between mx-20 items-center">
       <div className="flex">
@@ -20,19 +39,19 @@ const Login = () => {
       </div>
       <Fade right>
         <div className="bg-[#F9FAFC] w-1/3 p-5">
-          <form action="">
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
             <TextField
-              sx={{ marginTop: "20px" }}
+              {...register("email", { required: true })}
               className="w-full"
               id="filled-basic"
               label="Your Email"
               variant="outlined"
-              name="email"
-              type="email"
+              type="text"
               required
               size="small"
             />
             <TextField
+              {...register("password", { required: true })}
               sx={{ marginTop: "20px" }}
               className="w-full"
               id="filled-basic"
@@ -55,21 +74,15 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <button
+            <input
               className="bg-[#F7C531] px-5 py-3 w-full my-5"
+              value="LOGIN"
               type="submit"
-            >
-              Login
-            </button>
+            />
           </form>
           <div>
             <div className="h-1 w-full bg-[#64646541]"></div>
-            <button
-              className="bg-[#000] text-white px-5 py-3 w-full my-5 text-2xl"
-              type="submit"
-            >
-              <FcGoogle className="mx-auto" />
-            </button>
+            <SignInWithGoogle />
           </div>
         </div>
       </Fade>
