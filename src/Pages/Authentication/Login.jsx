@@ -2,13 +2,15 @@ import { TextField } from "@mui/material";
 import React from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SignInWithGoogle from "./SignInWithGoogle";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -22,7 +24,8 @@ const Login = () => {
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword(data.email, data.password);
     if (user) {
-      await console.log("Success");
+      console.log("first");
+      navigate("/");
     }
   };
   return (

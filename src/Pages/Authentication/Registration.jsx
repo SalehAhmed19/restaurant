@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SignInWithGoogle from "./SignInWithGoogle";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -21,7 +23,9 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth);
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
-    await console.log("Success");
+    if (user) {
+      navigate("/");
+    }
   };
 
   return (

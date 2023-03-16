@@ -15,10 +15,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import logo from "../../Assets/logo.svg";
 import { AiOutlineShopping } from "react-icons/ai";
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const drawerWidth = 240;
 const navItems = ["Home", "Menu", "Shop", "Contact"];
@@ -60,6 +62,9 @@ function DrawerAppBar(props) {
       padding: "0 4px",
     },
   }));
+  const [user] = useAuthState(auth);
+  const [signOut, loading, error] = useSignOut(auth);
+  console.log(user);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -120,11 +125,19 @@ function DrawerAppBar(props) {
                 </IconButton>
               </div>
             </Link>
-            <Link to="/login">
-              <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full mx-5">
-                <FiLogIn className="text-2xl" />
-              </div>
-            </Link>
+            {user ? (
+              <button onClick={() => signOut()}>
+                <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full mx-5">
+                  <FiLogOut className="text-2xl" />
+                </div>
+              </button>
+            ) : (
+              <Link to="/login">
+                <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full mx-5">
+                  <FiLogIn className="text-2xl" />
+                </div>
+              </Link>
+            )}
           </div>
         </Toolbar>
       </AppBar>
