@@ -2,19 +2,24 @@ import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
+import Loading from "../../Components/Shared/Loading";
 import auth from "../../firebase.init";
 
 const SignInWithGoogle = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  let from = location.state?.from?.pathname || "/";
+  const [signInWithGoogle, user, gLoading, error] = useSignInWithGoogle(auth);
+  if (gLoading) {
+    return <Loading />;
+  }
+  if (user) {
+    navigate(from, { replace: true });
+  }
   return (
     <button
       onClick={() => {
         signInWithGoogle();
-        if (user) {
-          navigate("/");
-        }
       }}
       className="bg-[#000] text-white px-5 py-3 w-full my-5 text-2xl"
       type="submit"

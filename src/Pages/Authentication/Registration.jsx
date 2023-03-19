@@ -8,10 +8,12 @@ import SignInWithGoogle from "./SignInWithGoogle";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { updateProfile } from "firebase/auth";
+import Loading from "../../Components/Shared/Loading";
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -23,10 +25,13 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth);
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
-    if (user) {
-      navigate("/");
-    }
   };
+  if (user) {
+    navigate(from, { replace: true });
+  }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex justify-between mx-20 items-center">

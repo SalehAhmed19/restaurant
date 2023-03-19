@@ -7,10 +7,12 @@ import SignInWithGoogle from "./SignInWithGoogle";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Loading from "../../Components/Shared/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -23,11 +25,13 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword(data.email, data.password);
-    if (user) {
-      console.log("first");
-      navigate("/");
-    }
   };
+  if (user) {
+    navigate(from, { replace: true });
+  }
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="flex justify-between mx-20 items-center">
       <div className="flex">
