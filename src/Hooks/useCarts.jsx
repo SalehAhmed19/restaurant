@@ -7,7 +7,9 @@ const useCarts = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:4000/api/cart?customerEmail=${user?.email}`)
+      fetch(
+        `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`
+      )
         .then((res) => res.json())
         .then((data) => setCarts(data));
     }

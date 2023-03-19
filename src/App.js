@@ -49,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+// backend api url: https://kayi-tribe-restuarant.onrender.com

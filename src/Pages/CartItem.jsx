@@ -5,7 +5,7 @@ import useCarts from "../Hooks/useCarts";
 const CartItem = ({ cart, setOpen }) => {
   const [carts, setCarts] = useCarts();
   const handleDelete = () => {
-    fetch(`http://localhost:4000/api/cart/${cart._id}`, {
+    fetch(`https://kayi-tribe-restuarant.onrender.com/api/cart/${cart._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
