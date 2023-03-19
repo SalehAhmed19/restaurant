@@ -131,7 +131,12 @@ function DrawerAppBar(props) {
             </Link> */}
             <CartRoute />
             {user ? (
-              <button onClick={() => signOut()}>
+              <button
+                onClick={() => {
+                  signOut();
+                  localStorage.removeItem("accessToken");
+                }}
+              >
                 <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full mx-5">
                   <FiLogOut className="text-2xl" />
                 </div>

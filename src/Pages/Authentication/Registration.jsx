@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
 import { useForm } from "react-hook-form";
@@ -28,6 +28,12 @@ const Register = () => {
 
   const [token] = useToken(user);
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
+
   if (loading) {
     return <Loading />;
   }
@@ -42,9 +48,6 @@ const Register = () => {
     // localStorage.setItem("accessToken", data.token);
     // // navigate(from, { replace: true });
   };
-  if (token) {
-    navigate(from, { replace: true });
-  }
 
   return (
     <div className="flex justify-between mx-20 items-center">

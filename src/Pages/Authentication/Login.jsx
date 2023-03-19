@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -28,6 +28,12 @@ const Login = () => {
   console.log(user);
   const [token] = useToken(user);
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
+
   if (loading) {
     return <Loading />;
   }
@@ -41,9 +47,7 @@ const Login = () => {
     //   }
     // );
   };
-  if (token) {
-    navigate(from, { replace: true });
-  }
+
   return (
     <div className="flex justify-between mx-20 items-center">
       <div className="flex">

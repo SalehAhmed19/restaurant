@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,11 +12,13 @@ const SignInWithGoogle = ({ email }) => {
   let from = location.state?.from?.pathname || "/";
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [token] = useToken(user);
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
   if (loading) {
     return <Loading />;
-  }
-  if (token) {
-    navigate(from, { replace: true });
   }
   return (
     <button
