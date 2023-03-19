@@ -22,15 +22,15 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  if (loading) {
+    return <Loading />;
+  }
 
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword(data.email, data.password);
   };
   if (user) {
     navigate(from, { replace: true });
-  }
-  if (loading) {
-    return <Loading />;
   }
   return (
     <div className="flex justify-between mx-20 items-center">

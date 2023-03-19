@@ -9,8 +9,8 @@ const SignInWithGoogle = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  const [signInWithGoogle, user, gLoading, error] = useSignInWithGoogle(auth);
-  if (gLoading) {
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  if (loading) {
     return <Loading />;
   }
   if (user) {

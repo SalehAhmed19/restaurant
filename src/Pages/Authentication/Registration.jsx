@@ -23,14 +23,14 @@ const Register = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  if (loading) {
+    return <Loading />;
+  }
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
   };
   if (user) {
     navigate(from, { replace: true });
-  }
-  if (loading) {
-    return <Loading />;
   }
 
   return (
