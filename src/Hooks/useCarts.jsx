@@ -11,37 +11,44 @@ const useCarts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (user) {
-    //   try {
-    //     fetch(`https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`, {
-    //       headers: {
-    //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //       },
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => setCarts(data));
-    //   } catch (error) {
-    //     console.log(error.message);
-    //   }
-    // }
-    const getCart = async () => {
-      const url = `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`;
-      try {
-        const { data } = await axios.get(url, {
+    if (user) {
+      fetch(
+        `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`,
+        {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-        });
-        setCarts(data);
-      } catch (error) {
-        console.log(error.response.status);
-        if (error.response.status === 401 || error.response.status === 403) {
-          signOut(auth);
-          navigate("/login");
         }
-      }
-    };
-    getCart();
+      )
+        .then((res) => {
+          // if (res.status === 401 || res.status === 403) {
+          //   signOut(auth);
+
+          //   navigate("/");
+          // }
+          return res.json();
+        })
+        .then((data) => setCarts(data));
+    }
+    // const getCart = async () => {
+    //   const url = `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`;
+    //   try {
+    //     const { data } = await axios.get(url, {
+    //       headers: {
+    //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    //       },
+    //     });
+    //     setCarts(data);
+    //   } catch (error) {
+    //     console.log(error.response.status);
+    //     if (error.response.status === 401 || error.response.status === 403) {
+    //       signOut(auth);
+    //       // localStorage.removeItem("accessToken");
+    //       navigate("/login");
+    //     }
+    //   }
+    // };
+    // getCart();
   }, [user, carts, navigate]);
   return [carts, setCarts];
 };
