@@ -5,6 +5,7 @@ import DrawerAppBar from "./Components/Shared/DrawerAppBar";
 import Footer from "./Components/Shared/Footer";
 import Login from "./Pages/Authentication/Login";
 import Registration from "./Pages/Authentication/Registration";
+import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Cart from "./Pages/Cart";
 import FoodDetails from "./Pages/FoodDetails";
 import Home from "./Pages/Home";
@@ -17,8 +18,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/our-menu" element={<OurMenu />} />
-        <Route path="/our-menu/:id" element={<FoodDetails />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/our-menu/:id"
+          element={
+            <RequireAuth>
+              <FoodDetails />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth>
+              <Cart />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/:name" element={<CategoryMenu />} />
