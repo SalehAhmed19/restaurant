@@ -13,7 +13,7 @@ const useCarts = () => {
   useEffect(() => {
     // if (user) {
     //   try {
-    //     fetch(`http://localhost:4000/api/cart?customerEmail=${user?.email}`, {
+    //     fetch(`https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`, {
     //       headers: {
     //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     //       },
@@ -25,7 +25,7 @@ const useCarts = () => {
     //   }
     // }
     const getCart = async () => {
-      const url = `http://localhost:4000/api/cart?customerEmail=${user?.email}`;
+      const url = `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {

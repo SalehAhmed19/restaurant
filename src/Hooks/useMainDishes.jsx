@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useMainDishes = () => {
   const [dishes, setDishes] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/api/main")
+    fetch("https://kayi-tribe-restuarant.onrender.com/api/main")
       .then((res) => res.json())
       .then((data) => setDishes(data));
   }, [dishes]);
