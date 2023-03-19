@@ -24,7 +24,10 @@ const About = () => {
     },
   ];
   return (
-    <div className="flex flex-col lg:flex-row lg:ml-20 lg:pr-20 bg-[#F9FAFC]">
+    <div
+      id="about"
+      className="flex flex-col lg:flex-row lg:ml-20 lg:pr-20 bg-[#F9FAFC]"
+    >
       <div className="relative">
         <Zoom>
           <img className="w-[500px]" src={interior} alt="" />

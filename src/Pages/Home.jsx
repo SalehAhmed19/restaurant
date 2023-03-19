@@ -8,7 +8,7 @@ import Teams from "../Components/Isolated/Teams";
 
 const Home = () => {
   return (
-    <div>
+    <div id="/">
       <Banner />
       <About />
       <Categories />

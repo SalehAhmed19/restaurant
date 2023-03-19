@@ -16,14 +16,26 @@ import Button from "@mui/material/Button";
 import logo from "../../Assets/logo.svg";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import LoginRoute from "./LoginRoute";
+import CartRoute from "./CartRoute";
 
 const drawerWidth = 240;
-const navItems = ["Home", "Menu", "Shop", "Contact"];
+const navItems = [
+  { _id: 1, menu: "Home", route: "/", url: "/" },
+  { _id: 2, menu: "About", route: "/about", url: "about" },
+  {
+    _id: 3,
+    menu: "Most Popular Dishes",
+    route: "/popular-dishes",
+    url: "popular-dishes",
+  },
+  { _id: 4, menu: "Our Chief", route: "/chief", url: "chief" },
+];
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -42,9 +54,9 @@ function DrawerAppBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item._id} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.menu} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -54,14 +66,6 @@ function DrawerAppBar(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: -3,
-      top: 13,
-      border: `2px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-    },
-  }));
   const [user] = useAuthState(auth);
   const [signOut, loading, error] = useSignOut(auth);
   console.log(user);
@@ -101,9 +105,21 @@ function DrawerAppBar(props) {
             <img className="lg:mr-20 w-20 lg:w-[200px]" src={logo} alt="" />
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#000", margin: "0 20px" }}>
-                  {item}
-                </Button>
+                <Link
+                  to={item.url}
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                  key={item._id}
+                >
+                  <Button
+                    key={item._id}
+                    sx={{ color: "#000", margin: "0 20px" }}
+                  >
+                    {item.menu}
+                  </Button>
+                </Link>
               ))}
             </Box>
           </div>
@@ -113,18 +129,7 @@ function DrawerAppBar(props) {
                 <AiOutlineShopping className="text-2xl" />
               </div>
             </Link> */}
-            <Link to="/cart">
-              <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full">
-                <IconButton
-                  className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full"
-                  aria-label="cart"
-                >
-                  <StyledBadge badgeContent={4} color="secondary">
-                    <AiOutlineShopping />
-                  </StyledBadge>
-                </IconButton>
-              </div>
-            </Link>
+            <CartRoute />
             {user ? (
               <button onClick={() => signOut()}>
                 <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full mx-5">
@@ -132,11 +137,7 @@ function DrawerAppBar(props) {
                 </div>
               </button>
             ) : (
-              <Link to="/login">
-                <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full mx-5">
-                  <FiLogIn className="text-2xl" />
-                </div>
-              </Link>
+              <LoginRoute />
             )}
           </div>
         </Toolbar>

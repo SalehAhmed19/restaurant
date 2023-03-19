@@ -12,7 +12,7 @@ import useDesserts from "../../Hooks/useDesserts";
 const PopularDishes = () => {
   const [desserts] = useDesserts();
   return (
-    <div className="lg:mx-20 mx-5">
+    <div id="popular-dishes" className="lg:mx-20 mx-5">
       <div className="flex flex-col lg:flex-row justify-between items-center my-5">
         <Fade left>
           <div>
