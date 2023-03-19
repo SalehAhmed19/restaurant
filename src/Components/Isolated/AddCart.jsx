@@ -36,6 +36,7 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
       .then((data) => {
         if (data) {
           setOpen(true);
+          setTimeout(() => setOpen(false), 3000);
         }
         setTotal(0);
         setQuantity(0);
