@@ -69,7 +69,6 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
   const [user] = useAuthState(auth);
   const [signOut, loading, error] = useSignOut(auth);
-  console.log(user);
 
   return (
     <Box sx={{ display: "flex" }}>

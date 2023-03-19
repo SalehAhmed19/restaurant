@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../Components/Shared/Loading";
 import auth from "../../firebase.init";
 
-const SignInWithGoogle = () => {
+const SignInWithGoogle = ({ email }) => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";

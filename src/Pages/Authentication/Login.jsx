@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
 import avatar from "../../Assets/login.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../../Components/Shared/Loading";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,11 +27,16 @@ const Login = () => {
     return <Loading />;
   }
 
-  const onSubmit = async (data) => {
-    await signInWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (info) => {
+    await signInWithEmailAndPassword(info.email, info.password);
+    const { data } = await axios.post("http://localhost:4000/api/token", {
+      email: info.email,
+    });
+    localStorage.setItem("accessToken", data.token);
+    navigate(from, { replace: true });
   };
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
   return (
     <div className="flex justify-between mx-20 items-center">

@@ -9,6 +9,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { updateProfile } from "firebase/auth";
 import Loading from "../../Components/Shared/Loading";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,11 +27,16 @@ const Register = () => {
   if (loading) {
     return <Loading />;
   }
-  const onSubmit = async (data) => {
-    await createUserWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (info) => {
+    await createUserWithEmailAndPassword(info.email, info.password);
+    const { data } = await axios.post("http://localhost:4000/api/token", {
+      email: info.email,
+    });
+    localStorage.setItem("accessToken", data.token);
+    navigate(from, { replace: true });
   };
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
   return (

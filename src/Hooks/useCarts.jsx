@@ -7,13 +7,15 @@ const useCarts = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`
-      )
+      fetch(`http://localhost:4000/api/cart?customerEmail=${user?.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => setCarts(data));
     }
-  }, [user, carts]);
+  }, [user]);
   return [carts, setCarts];
 };
 
