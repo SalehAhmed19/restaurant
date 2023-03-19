@@ -18,6 +18,7 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
   const [user] = useAuthState(auth);
   const [open, setOpen] = useState(false);
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const handleCart = (event) => {
     event.preventDefault();
     const item = {
@@ -28,6 +29,7 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
       price: parseInt(total),
       customerEmail: user?.email,
       customerPhone: phone,
+      customerAddress: address,
     };
     fetch("https://kayi-tribe-restuarant.onrender.com/api/cart", {
       method: "POST",
@@ -94,6 +96,19 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
             size="small"
             label="Phone Number"
             variant="standard"
+          />
+          <TextField
+            required
+            sx={{
+              marginBottom: "10px",
+              width: "100%",
+            }}
+            name="address"
+            onChange={(e) => setAddress(e.target.value)}
+            size="small"
+            label="Address"
+            variant="standard"
+            type="address"
           />
           <div className="flex flex-col lg:flex-row">
             <button

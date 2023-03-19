@@ -23,7 +23,7 @@ const CartRoute = () => {
             className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full"
             aria-label="cart"
           >
-            <StyledBadge badgeContent={carts.length} color="secondary">
+            <StyledBadge badgeContent={carts.length} color="warning">
               <AiOutlineShopping />
             </StyledBadge>
           </IconButton>
