@@ -15,7 +15,7 @@ const useCarts = () => {
         .then((res) => res.json())
         .then((data) => setCarts(data));
     }
-  }, [user]);
+  }, [user, carts]);
   return [carts, setCarts];
 };
 
