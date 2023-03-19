@@ -20,6 +20,7 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
   const handleCart = (event) => {
     event.preventDefault();
     const item = {
+      foodImg: food.img,
       foodId: food._id,
       food: food.name,
       quantity: parseInt(quantity),
