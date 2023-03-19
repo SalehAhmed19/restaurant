@@ -23,10 +23,11 @@ import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import LoginRoute from "./LoginRoute";
 import CartRoute from "./CartRoute";
+import HomeRoute from "./HomeRoute";
 
 const drawerWidth = 240;
 const navItems = [
-  { _id: 1, menu: "Home", route: "/", url: "/" },
+  { _id: 1, menu: <HomeRoute />, route: "/", url: "/" },
   { _id: 2, menu: "About", route: "/about", url: "about" },
   {
     _id: 3,
