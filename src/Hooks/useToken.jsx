@@ -6,7 +6,7 @@ const useToken = (user) => {
     const email = user?.user?.email;
     const currentUser = { email: email };
     if (email) {
-      fetch(`http://localhost:4000/api/users/${email}`, {
+      fetch(`https://kayi-tribe-restuarant.onrender.com/api/users/${email}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(currentUser),

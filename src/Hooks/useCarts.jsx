@@ -9,27 +9,30 @@ const useCarts = () => {
   const [carts, setCarts] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (user) {
       fetch(
         `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`,
         {
+          method: "GET",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
       )
         .then((res) => {
-          // if (res.status === 401 || res.status === 403) {
-          //   signOut(auth);
-          //   navigate(from, { replace: true });
-          // }
+          // console.log(res);
+          if (res.status === 401 || res.status === 403) {
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
           return res.json();
         })
-        .then((data) => setCarts(data));
+        .then((data) => {
+          setCarts(data);
+        });
     }
     // const getCart = async () => {
     //   const url = `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`;
