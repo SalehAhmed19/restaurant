@@ -9,6 +9,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../../Components/Shared/Loading";
 import axios from "axios";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,23 +24,25 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  console.log(user);
+  const [token] = useToken(user);
+
   if (loading) {
     return <Loading />;
   }
 
   const onSubmit = async (info) => {
     await signInWithEmailAndPassword(info.email, info.password);
-    const { data } = await axios.post(
-      "https://kayi-tribe-restuarant.onrender.com/api/token",
-      {
-        email: info.email,
-      }
-    );
-    localStorage.setItem("accessToken", data.token);
-    navigate(from, { replace: true });
+    // const { data } = await axios.post(
+    //   "https://kayi-tribe-restuarant.onrender.com/api/token",
+    //   {
+    //     email: info.email,
+    //   }
+    // );
   };
-  if (user) {
-    // navigate(from, { replace: true });
+  if (token) {
+    navigate(from, { replace: true });
   }
   return (
     <div className="flex justify-between mx-20 items-center">

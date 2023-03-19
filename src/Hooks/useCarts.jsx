@@ -2,13 +2,15 @@ import axios from "axios";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 
 const useCarts = () => {
   const [carts, setCarts] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (user) {
@@ -23,8 +25,7 @@ const useCarts = () => {
         .then((res) => {
           // if (res.status === 401 || res.status === 403) {
           //   signOut(auth);
-
-          //   navigate("/");
+          //   navigate(from, { replace: true });
           // }
           return res.json();
         })

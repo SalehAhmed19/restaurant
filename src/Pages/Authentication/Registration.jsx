@@ -10,6 +10,7 @@ import auth from "../../firebase.init";
 import { updateProfile } from "firebase/auth";
 import Loading from "../../Components/Shared/Loading";
 import axios from "axios";
+import useToken from "../../Hooks/useToken";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -24,22 +25,25 @@ const Register = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+
+  const [token] = useToken(user);
+
   if (loading) {
     return <Loading />;
   }
   const onSubmit = async (info) => {
     await createUserWithEmailAndPassword(info.email, info.password);
-    const { data } = await axios.post(
-      "https://kayi-tribe-restuarant.onrender.com/api/token",
-      {
-        email: info.email,
-      }
-    );
-    localStorage.setItem("accessToken", data.token);
-    navigate(from, { replace: true });
+    // const { data } = await axios.post(
+    //   "https://kayi-tribe-restuarant.onrender.com/api/token",
+    //   {
+    //     email: info.email,
+    //   }
+    // );
+    // localStorage.setItem("accessToken", data.token);
+    // // navigate(from, { replace: true });
   };
-  if (user) {
-    // navigate(from, { replace: true });
+  if (token) {
+    navigate(from, { replace: true });
   }
 
   return (
