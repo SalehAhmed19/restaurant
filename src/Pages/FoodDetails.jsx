@@ -34,7 +34,7 @@ const FoodDetails = () => {
     }
   };
   return (
-    <div className="mt-24 p-10 grid grid-cols-1 lg:grid-cols-3">
+    <div className="p-10 grid grid-cols-1 lg:grid-cols-3">
       <div>
         <Zoom>
           <img className="w-96 rounded-md" src={food.img} alt="" />

@@ -12,6 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 
 const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
   const [user] = useAuthState(auth);
@@ -20,9 +21,9 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
   const handleCart = (event) => {
     event.preventDefault();
     const item = {
-      foodImg: food.img,
-      foodId: food._id,
-      food: food.name,
+      foodImg: food?.img,
+      foodId: food?._id,
+      food: food?.name,
       quantity: parseInt(quantity),
       price: parseInt(total),
       customerEmail: user?.email,
@@ -102,10 +103,12 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
               <BsCartCheck className="lg:mr-3" />
               Add to Cart
             </button>
-            <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
-              <MdOutlinePayment className="lg:mr-3" />
-              Proceed Payment
-            </button>
+            <Link to="/checkout">
+              <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
+                <MdOutlinePayment className="lg:mr-3" />
+                Proceed Payment
+              </button>
+            </Link>
           </div>
         </form>
       </div>

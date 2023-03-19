@@ -39,7 +39,7 @@ const OurMenu = () => {
   return (
     <div>
       <Fade left>
-        <div className="mt-28 bg-[#F9FAFC] p-20">
+        <div className="bg-[#F9FAFC] p-20">
           <h2 className="text-4xl font-bold">Our Menu</h2>
         </div>
       </Fade>

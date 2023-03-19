@@ -18,14 +18,16 @@ const CartRoute = () => {
   return (
     <Link to="/cart">
       <div className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full">
-        <IconButton
-          className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full"
-          aria-label="cart"
-        >
-          <StyledBadge badgeContent={carts.length} color="secondary">
-            <AiOutlineShopping />
-          </StyledBadge>
-        </IconButton>
+        <Link to="/cart">
+          <IconButton
+            className="lg:h-14 h-7 lg:w-14 w-7 bg-[#F2F3F5] flex justify-center items-center rounded-full"
+            aria-label="cart"
+          >
+            <StyledBadge badgeContent={carts.length} color="secondary">
+              <AiOutlineShopping />
+            </StyledBadge>
+          </IconButton>
+        </Link>
       </div>
     </Link>
   );

@@ -12,7 +12,7 @@ const Banner = () => {
   return (
     <div
       style={{ background: `url(${bg})`, backgroundSize: "cover" }}
-      className="pt-28 lg:px-24 px-5 h-screen"
+      className="lg:px-24 px-5 h-screen"
     >
       <Fade down>
         <p className="bg-[#F2F3F5] inline-block p-1 text-sm">Hi, new friend!</p>

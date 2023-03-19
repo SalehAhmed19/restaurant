@@ -8,7 +8,7 @@ const Cart = () => {
   const [carts] = useCarts();
   const [open, setOpen] = useState(false);
   return (
-    <div className="mt-24 p-10">
+    <div className="p-10">
       <h2 className="text-4xl font-bold mb-5">Cart</h2>
       <Box sx={{ width: "100%" }}>
         <Collapse in={open}>

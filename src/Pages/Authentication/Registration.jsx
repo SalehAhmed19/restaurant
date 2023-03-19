@@ -29,7 +29,7 @@ const Register = () => {
   };
 
   return (
-    <div className="mt-28 flex justify-between mx-20 items-center">
+    <div className="flex justify-between mx-20 items-center">
       <div className="flex">
         <Zoom>
           <img className="w-80" src={avatar} alt="" />

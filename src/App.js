@@ -10,16 +10,35 @@ import Cart from "./Pages/Cart";
 import FoodDetails from "./Pages/FoodDetails";
 import Home from "./Pages/Home";
 import OurMenu from "./Pages/OurMenu";
+import Checkout from "./Pages/Payment/Checkout";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen" style={{ fontFamily: "Rubik" }}>
+    <div
+      className="pt-28 flex flex-col min-h-screen"
+      style={{ fontFamily: "Rubik" }}
+    >
       <DrawerAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/our-menu" element={<OurMenu />} />
-        <Route path="/our-menu/:id" element={<FoodDetails />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/our-menu/:id"
+          element={
+            <RequireAuth>
+              <FoodDetails />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth>
+              <Cart />
+            </RequireAuth>
+          }
+        />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/:name" element={<CategoryMenu />} />
