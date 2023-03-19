@@ -71,7 +71,13 @@ const FoodDetails = () => {
         </div>
       </Fade>
       <Fade down>
-        <AddCart total={total} quantity={quantity} food={food} />
+        <AddCart
+          total={total}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          setTotal={setTotal}
+          food={food}
+        />
       </Fade>
     </div>
   );

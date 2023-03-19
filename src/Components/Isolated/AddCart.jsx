@@ -3,12 +3,22 @@ import { BsCartCheck } from "react-icons/bs";
 import { MdOutlinePayment } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { TextField } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Collapse,
+  IconButton,
+  TextField,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
-const AddCart = ({ total, food, quantity }) => {
+const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
   const [user] = useAuthState(auth);
+  const [open, setOpen] = useState(false);
   const [phone, setPhone] = useState("");
-  const handleCart = () => {
+  const handleCart = (event) => {
+    event.preventDefault();
     const item = {
       foodId: food._id,
       food: food.name,
@@ -17,10 +27,44 @@ const AddCart = ({ total, food, quantity }) => {
       customerEmail: user?.email,
       customerPhone: phone,
     };
-    console.log(phone);
+    fetch("http://localhost:4000/api/cart", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setOpen(true);
+        }
+        setTotal(0);
+        setQuantity(0);
+      });
+    event.target.reset();
   };
   return (
     <div className="bg-[#F9FAFC] my-5">
+      <Box sx={{ width: "100%" }}>
+        <Collapse in={open}>
+          <Alert
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            Successfully add to the cart
+          </Alert>
+        </Collapse>
+      </Box>
       <div className="bg-[#F7C531] p-3">
         <h3 className="text-2xl font-bold text-right">Add to cart</h3>
       </div>
@@ -35,30 +79,33 @@ const AddCart = ({ total, food, quantity }) => {
           <span className="font-normal text-sm">$</span>
           {total}
         </h4>
-        <TextField
-          sx={{
-            marginBottom: "10px",
-            width: "100%",
-          }}
-          name="phone"
-          onChange={(e) => setPhone(e.target.value)}
-          size="small"
-          label="Phone Number"
-          variant="standard"
-        />
-        <div className="flex flex-col lg:flex-row">
-          <button
-            onClick={handleCart}
-            className="bg-[#F7C531] px-5 py-3 m-2 flex justify-between items-center"
-          >
-            <BsCartCheck className="lg:mr-3" />
-            Add to Cart
-          </button>
-          <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
-            <MdOutlinePayment className="lg:mr-3" />
-            Proceed Payment
-          </button>
-        </div>
+        <form onSubmit={handleCart} action="">
+          <TextField
+            required
+            sx={{
+              marginBottom: "10px",
+              width: "100%",
+            }}
+            name="phone"
+            onChange={(e) => setPhone(e.target.value)}
+            size="small"
+            label="Phone Number"
+            variant="standard"
+          />
+          <div className="flex flex-col lg:flex-row">
+            <button
+              type="submit"
+              className="bg-[#F7C531] px-5 py-3 m-2 flex justify-between items-center"
+            >
+              <BsCartCheck className="lg:mr-3" />
+              Add to Cart
+            </button>
+            <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
+              <MdOutlinePayment className="lg:mr-3" />
+              Proceed Payment
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
