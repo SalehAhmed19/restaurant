@@ -5,7 +5,7 @@ import logo from "../../Assets/logo.svg";
 const Footer = () => {
   return (
     <Fade up>
-      <div className="p-10 flex flex-col lg:flex-row items-center justify-between">
+      <div className="p-10 flex flex-col lg:flex-row items-center justify-between mt-auto border-t">
         <img src={logo} alt="" />
         <p>&copy; All Rights Reserved by Saleh Ahmed Mahin</p>
       </div>

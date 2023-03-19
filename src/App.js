@@ -13,27 +13,13 @@ import OurMenu from "./Pages/OurMenu";
 
 function App() {
   return (
-    <div style={{ fontFamily: "Rubik" }}>
+    <div className="flex flex-col min-h-screen" style={{ fontFamily: "Rubik" }}>
       <DrawerAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/our-menu" element={<OurMenu />} />
-        <Route
-          path="/our-menu/:id"
-          element={
-            <RequireAuth>
-              <FoodDetails />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <RequireAuth>
-              <Cart />
-            </RequireAuth>
-          }
-        />
+        <Route path="/our-menu/:id" element={<FoodDetails />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/:name" element={<CategoryMenu />} />
