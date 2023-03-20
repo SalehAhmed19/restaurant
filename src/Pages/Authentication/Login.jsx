@@ -28,11 +28,14 @@ const Login = () => {
   console.log(user);
   const [token] = useToken(user);
 
-  useEffect(() => {
-    if (token) {
-      navigate(from, { replace: true });
-    }
-  }, [token, from, navigate]);
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate(from, { replace: true });
+  //   }
+  // }, [token, from, navigate]);
+  if (user) {
+    navigate(from, { replace: true });
+  }
 
   if (loading) {
     return <Loading />;

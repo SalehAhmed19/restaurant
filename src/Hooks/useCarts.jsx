@@ -13,21 +13,22 @@ const useCarts = () => {
   useEffect(() => {
     if (user) {
       fetch(`http://localhost:4000/api/cart?customerEmail=${user?.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
+        // method: "GET",
+        // headers: {
+        //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        // },
       })
         .then((res) => {
-          // console.log(res);
-          if (res.status === 401 || res.status === 403) {
-            console.log("first");
-            console.log(res.status);
-            // signOut(auth);
-            // localStorage.removeItem("accessToken");
-            // navigate("/");
-          }
           return res.json();
+          // console.log(res);
+          // if (res.status === 401 || res.status === 403) {
+          //   // console.log("first");
+          //   // console.log(res.status);
+          //   // signOut(auth);
+          //   // localStorage.removeItem("accessToken");
+          //   // navigate("/");
+          // }
+          // return res.json();
         })
         .then((data) => {
           setCarts(data);
