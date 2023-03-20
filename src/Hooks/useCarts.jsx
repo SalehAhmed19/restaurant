@@ -24,6 +24,7 @@ const useCarts = () => {
         .then((res) => {
           // console.log(res);
           if (res.status === 401 || res.status === 403) {
+            console.log("first");
             signOut(auth);
             localStorage.removeItem("accessToken");
             navigate("/");
