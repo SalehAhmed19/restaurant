@@ -12,22 +12,20 @@ const useCarts = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`,
-        {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`http://localhost:4000/api/cart?customerEmail=${user?.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           // console.log(res);
           if (res.status === 401 || res.status === 403) {
             console.log("first");
-            signOut(auth);
-            localStorage.removeItem("accessToken");
-            navigate("/");
+            console.log(res.status);
+            // signOut(auth);
+            // localStorage.removeItem("accessToken");
+            // navigate("/");
           }
           return res.json();
         })
@@ -35,25 +33,6 @@ const useCarts = () => {
           setCarts(data);
         });
     }
-    // const getCart = async () => {
-    //   const url = `https://kayi-tribe-restuarant.onrender.com/api/cart?customerEmail=${user?.email}`;
-    //   try {
-    //     const { data } = await axios.get(url, {
-    //       headers: {
-    //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //       },
-    //     });
-    //     setCarts(data);
-    //   } catch (error) {
-    //     console.log(error.response.status);
-    //     if (error.response.status === 401 || error.response.status === 403) {
-    //       signOut(auth);
-    //       // localStorage.removeItem("accessToken");
-    //       navigate("/login");
-    //     }
-    //   }
-    // };
-    // getCart();
   }, [user, carts, navigate]);
   return [carts, setCarts];
 };

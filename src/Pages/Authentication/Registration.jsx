@@ -40,7 +40,7 @@ const Register = () => {
   const onSubmit = async (info) => {
     await createUserWithEmailAndPassword(info.email, info.password);
     // const { data } = await axios.post(
-    //   "https://kayi-tribe-restuarant.onrender.com/api/token",
+    //   "http://localhost:4000/api/token",
     //   {
     //     email: info.email,
     //   }
