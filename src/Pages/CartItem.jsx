@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { MdOutlinePayment } from "react-icons/md";
+import { MdDeleteOutline, MdOutlinePayment } from "react-icons/md";
+import { Link } from "react-router-dom";
 import useCarts from "../Hooks/useCarts";
 
 const CartItem = ({ cart, setOpen }) => {
@@ -28,17 +29,19 @@ const CartItem = ({ cart, setOpen }) => {
           <p>Price: ${cart.price}</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <button className="flex items-center justify-center bg-[#F5C332] h-10 px-5">
-            <MdOutlinePayment className="lg:mr-3" />
-            Checkout
-          </button>
+          <Link to="/checkout">
+            <button className="flex items-center justify-center bg-[#F5C332] h-10 px-5">
+              <MdOutlinePayment className="lg:mr-3" />
+              Checkout
+            </button>
+          </Link>
           <button
             onClick={() => {
               handleDelete(cart._id);
             }}
             className="flex justify-center items-center bg-[#f53232] text-[#fff] h-10 px-5"
           >
-            <MdOutlinePayment className="lg:mr-3" />
+            <MdDeleteOutline className="lg:mr-3" />
             Delete
           </button>
         </div>
