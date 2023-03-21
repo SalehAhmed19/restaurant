@@ -11,23 +11,49 @@ const SignInWithGoogle = ({ email }) => {
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [token] = useToken(user);
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate(from, { replace: true });
-  //   }
-  // }, [token, from, navigate]);
-  if (user) {
+
+  const [token] = useToken(user?.user.email);
+
+  if (token) {
     navigate(from, { replace: true });
   }
+  const handleGoogleSigIn = async () => {
+    await signInWithGoogle();
+    const currentUser = { email: user?.user.email };
+    console.log(currentUser);
+    fetch(`http://localhost:4000/api/users/${user.user.email}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+  // }, [token, from, navigate]);
+  // const saveUser = (email) => {
+  //   const user = { email: email };
+  //   fetch(`http://localhost:4000/api/users/${email}`, {
+  //     method: "PUT",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       navigate("/");
+  //     });
+  // };
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
   if (loading) {
     return <Loading />;
   }
   return (
     <button
-      onClick={() => {
-        signInWithGoogle();
-      }}
+      onClick={() => handleGoogleSigIn()}
       className="bg-[#000] text-white px-5 py-3 w-full my-5 text-2xl"
       type="submit"
     >

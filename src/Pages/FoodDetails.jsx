@@ -40,7 +40,7 @@ const FoodDetails = () => {
           <img className="w-96 rounded-md" src={food.img} alt="" />
         </Zoom>
       </div>
-      <Fade up>
+      <Fade>
         <div className="mx-5">
           <h2 className="text-4xl font-bold">{food.name}</h2>
           <p className="text-[#6F6F87] my-5">{food.des}</p>
@@ -70,7 +70,7 @@ const FoodDetails = () => {
           </div>
         </div>
       </Fade>
-      <Fade down>
+      <Fade>
         <AddCart
           total={total}
           quantity={quantity}

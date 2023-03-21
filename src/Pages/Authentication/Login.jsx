@@ -26,16 +26,19 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   console.log(user);
-  const [token] = useToken(user);
+  const [token] = useToken(user?.user.email);
 
   // useEffect(() => {
   //   if (token) {
   //     navigate(from, { replace: true });
   //   }
   // }, [token, from, navigate]);
-  if (user) {
+  if (token) {
     navigate(from, { replace: true });
   }
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
 
   if (loading) {
     return <Loading />;

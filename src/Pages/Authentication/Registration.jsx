@@ -25,32 +25,49 @@ const Register = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  // const [createdUserEmail, setCreatedUserEmail] = useState("");
 
-  const [token] = useToken(user);
+  const [token] = useToken(user?.user.email);
 
   // useEffect(() => {
-  //   if (token) {
-  //     navigate(from, { replace: true });
-  //   }
-  // }, [token, from, navigate]);
-  if (user) {
+  if (token) {
     navigate(from, { replace: true });
   }
+  // }, [token, from, navigate]);
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
 
   if (loading) {
     return <Loading />;
   }
   const onSubmit = async (info) => {
     await createUserWithEmailAndPassword(info.email, info.password);
-    // const { data } = await axios.post(
-    //   "http://localhost:4000/api/token",
-    //   {
-    //     email: info.email,
-    //   }
-    // );
-    // localStorage.setItem("accessToken", data.token);
-    // // navigate(from, { replace: true });
+    const currentUser = { email: info.email };
+    fetch(`http://localhost:4000/api/users/${info.email}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
+
+  // const saveUser = (email) => {
+  //   const user = { email: email };
+  //   fetch(`http://localhost:4000/api/users/${email}`, {
+  //     method: "PUT",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       navigate("/");
+  //     });
+  // };
 
   return (
     <div className="flex justify-between mx-20 items-center">
