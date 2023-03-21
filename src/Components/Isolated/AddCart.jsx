@@ -31,7 +31,7 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
       customerPhone: phone,
       customerAddress: address,
     };
-    fetch("http://localhost:4000/api/cart", {
+    fetch("https://kayi-tribe-restuarant.onrender.com/api/cart", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(item),

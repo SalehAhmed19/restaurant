@@ -4,7 +4,7 @@ const useToken = (email) => {
   const [token, setToken] = useState("");
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:4000/api/jwt?email=${email}`)
+      fetch(`https://kayi-tribe-restuarant.onrender.com/api/jwt?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.accessToken) {

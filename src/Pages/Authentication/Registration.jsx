@@ -25,10 +25,10 @@ const Register = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-  // const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
 
-  const [token] = useToken(user?.user.email);
-
+  const [token] = useToken(createdUserEmail);
+  console.log(createdUserEmail);
   // useEffect(() => {
   if (token) {
     navigate(from, { replace: true });
@@ -44,20 +44,25 @@ const Register = () => {
   const onSubmit = async (info) => {
     await createUserWithEmailAndPassword(info.email, info.password);
     const currentUser = { email: info.email };
-    fetch(`http://localhost:4000/api/users/${info.email}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(currentUser),
-    })
+    fetch(
+      `https://kayi-tribe-restuarant.onrender.com/api/users/${info.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setCreatedUserEmail(info.email);
       });
   };
 
   // const saveUser = (email) => {
   //   const user = { email: email };
-  //   fetch(`http://localhost:4000/api/users/${email}`, {
+  //   fetch(`https://kayi-tribe-restuarant.onrender.com/api/users/${email}`, {
   //     method: "PUT",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(user),
