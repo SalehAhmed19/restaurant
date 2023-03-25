@@ -14,11 +14,9 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 
-const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
+const AddCart = ({ quantity, setTotal, food, setQuantity }) => {
   const [user] = useAuthState(auth);
   const [open, setOpen] = useState(false);
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
   const handleCart = (event) => {
     event.preventDefault();
     const item = {
@@ -26,12 +24,10 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
       foodId: food?._id,
       food: food?.name,
       quantity: parseInt(quantity),
-      price: parseInt(total),
+      price: parseInt(food?.price),
       customerEmail: user?.email,
-      customerPhone: phone,
-      customerAddress: address,
     };
-    fetch("https://kayi-tribe-restuarant.onrender.com/api/cart", {
+    fetch("http://localhost:4000/api/cart", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(item),
@@ -48,7 +44,7 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
     event.target.reset();
   };
   return (
-    <div className="bg-[#F9FAFC] my-5">
+    <div className="my-5">
       <Box sx={{ width: "100%" }}>
         <Collapse in={open}>
           <Alert
@@ -70,62 +66,21 @@ const AddCart = ({ total, setTotal, food, quantity, setQuantity }) => {
           </Alert>
         </Collapse>
       </Box>
-      <div className="bg-[#F7C531] p-3">
-        <h3 className="text-2xl font-bold text-right">Add to cart</h3>
-      </div>
-      <div className="m-5">
-        <h2 className="font-bold">{food.name}</h2>
-        <p className="my-2">{food.des}</p>
-        <p className="my-2">
-          <span className="text-base font-bold">Quantity: </span> {quantity}
-        </p>
-        <h4 className="text-xl mb-4 font-bold">
-          <span className="text-base">Total Price: </span>
-          <span className="font-normal text-sm">$</span>
-          {total}
-        </h4>
-        <form onSubmit={handleCart} action="">
-          <TextField
-            required
-            sx={{
-              marginBottom: "10px",
-              width: "100%",
-            }}
-            name="phone"
-            onChange={(e) => setPhone(e.target.value)}
-            size="small"
-            label="Phone Number"
-            variant="standard"
-          />
-          <TextField
-            required
-            sx={{
-              marginBottom: "10px",
-              width: "100%",
-            }}
-            name="address"
-            onChange={(e) => setAddress(e.target.value)}
-            size="small"
-            label="Address"
-            variant="standard"
-            type="address"
-          />
-          <div className="flex flex-col lg:flex-row">
-            <button
-              type="submit"
-              className="bg-[#F7C531] px-5 py-3 m-2 flex justify-between items-center"
-            >
-              <BsCartCheck className="lg:mr-3" />
-              Add to Cart
-            </button>
-            <Link to="/checkout">
-              <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
-                <MdOutlinePayment className="lg:mr-3" />
-                Proceed Payment
-              </button>
-            </Link>
-          </div>
-        </form>
+      <div className="flex flex-col lg:flex-row">
+        <button
+          onClick={handleCart}
+          type="submit"
+          className="bg-[#F7C531] px-5 py-3 my-2 flex justify-between items-center"
+        >
+          <BsCartCheck className="lg:mr-3" />
+          Add to Cart
+        </button>
+        <Link to="/checkout">
+          <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
+            <MdOutlinePayment className="lg:mr-3" />
+            Proceed Payment
+          </button>
+        </Link>
       </div>
     </div>
   );

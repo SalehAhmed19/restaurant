@@ -10,31 +10,28 @@ import AddCart from "../Components/Isolated/AddCart";
 const FoodDetails = () => {
   const { id } = useParams();
   const [food, setFood] = useState({});
+  const [quantity, setQuantity] = useState(0);
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
   useEffect(() => {
-    fetch(`https://kayi-tribe-restuarant.onrender.com/api/desserts/${id}`)
+    fetch(`http://localhost:4000/api/desserts/${id}`)
       .then((res) => res.json())
       .then((data) => setFood(data));
-    fetch(`https://kayi-tribe-restuarant.onrender.com/api/drinks/${id}`)
+    fetch(`http://localhost:4000/api/drinks/${id}`)
       .then((res) => res.json())
       .then((data) => setFood(data));
-    fetch(`https://kayi-tribe-restuarant.onrender.com/api/main/${id}`)
+    fetch(`http://localhost:4000/api/main/${id}`)
       .then((res) => res.json())
       .then((data) => setFood(data));
   }, []);
-  const [quantity, setQuantity] = useState(0);
-  const [total, setTotal] = useState(0);
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-    setTotal(total + food.price);
-  };
-  const handleDecrement = () => {
-    if (total > 0) {
-      setQuantity(quantity - 1);
-      setTotal(total - food.price);
-    }
-  };
   return (
-    <div className="p-10 grid grid-cols-1 lg:grid-cols-3">
+    <div className="p-10 grid grid-cols-1 lg:grid-cols-2">
       <div>
         <Zoom>
           <img className="w-96 rounded-md" src={food.img} alt="" />
@@ -54,6 +51,10 @@ const FoodDetails = () => {
             value={food.ratings}
             readOnly
           />
+          <h4 className="text-xl mb-5">
+            <span className="font-bold">Quantity: </span>
+            {quantity}
+          </h4>
           <div>
             <button
               onClick={handleIncrement}
@@ -68,16 +69,8 @@ const FoodDetails = () => {
               <TiMinus className="text-xl" />
             </button>
           </div>
+          <AddCart quantity={quantity} setQuantity={setQuantity} food={food} />
         </div>
-      </Fade>
-      <Fade>
-        <AddCart
-          total={total}
-          quantity={quantity}
-          setQuantity={setQuantity}
-          setTotal={setTotal}
-          food={food}
-        />
       </Fade>
     </div>
   );

@@ -44,16 +44,13 @@ const Register = () => {
   const onSubmit = async (info) => {
     await createUserWithEmailAndPassword(info.email, info.password);
     const currentUser = { email: info.email };
-    fetch(
-      `https://kayi-tribe-restuarant.onrender.com/api/users/${info.email}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(currentUser),
-      }
-    )
+    fetch(`http://localhost:4000/api/users/${info.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
       .then((res) => res.json())
       .then((data) => {
         setCreatedUserEmail(info.email);
@@ -62,7 +59,7 @@ const Register = () => {
 
   // const saveUser = (email) => {
   //   const user = { email: email };
-  //   fetch(`https://kayi-tribe-restuarant.onrender.com/api/users/${email}`, {
+  //   fetch(`http://localhost:4000/api/users/${email}`, {
   //     method: "PUT",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(user),

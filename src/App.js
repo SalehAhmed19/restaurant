@@ -3,6 +3,7 @@ import "./App.css";
 import CategoryMenu from "./Components/Isolated/CategoryMenu";
 import DrawerAppBar from "./Components/Shared/DrawerAppBar";
 import Footer from "./Components/Shared/Footer";
+import NotFound from "./Components/Shared/NotFound";
 import Login from "./Pages/Authentication/Login";
 import Registration from "./Pages/Authentication/Registration";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
@@ -10,7 +11,7 @@ import Cart from "./Pages/Cart";
 import FoodDetails from "./Pages/FoodDetails";
 import Home from "./Pages/Home";
 import OurMenu from "./Pages/OurMenu";
-import Checkout from "./Pages/Payment/Checkout";
+import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 
 function App() {
   return (
@@ -38,10 +39,18 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout-success"
+          element={
+            <RequireAuth>
+              <CheckoutSuccess />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/:name" element={<CategoryMenu />} />
+        {/* <Route path="/:name" element={<CategoryMenu />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
@@ -50,4 +59,4 @@ function App() {
 
 export default App;
 
-// backend api url: https://kayi-tribe-restuarant.onrender.com
+// backend api url: http://localhost:4000
