@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { MdOutlinePayment } from "react-icons/md";
-import Checkout from "./Payment/Checkout";
+import Checkout from "../Pages/Payment/Checkout";
 
 const Cart = () => {
   const [carts] = useCarts();
