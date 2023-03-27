@@ -35,9 +35,9 @@ const Cart = () => {
         </Collapse>
       </Box>
       <div className="border p-5 my-5">
-        <div className="border p-5">
+        {/* <div className="border p-5">
           <Checkout carts={carts} />
-        </div>
+        </div> */}
         {carts.map((cart) => (
           <>
             <CartItem key={cart._id} cart={cart} setOpen={setOpen} />

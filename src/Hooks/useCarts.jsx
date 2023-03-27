@@ -20,15 +20,6 @@ const useCarts = () => {
       })
         .then((res) => {
           return res.json();
-          // console.log(res);
-          // if (res.status === 401 || res.status === 403) {
-          //   // console.log("first");
-          //   // console.log(res.status);
-          //   // signOut(auth);
-          //   // localStorage.removeItem("accessToken");
-          //   // navigate("/");
-          // }
-          // return res.json();
         })
         .then((data) => {
           setCarts(data);

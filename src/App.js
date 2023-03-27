@@ -11,6 +11,7 @@ import Cart from "./Pages/Cart";
 import FoodDetails from "./Pages/FoodDetails";
 import Home from "./Pages/Home";
 import OurMenu from "./Pages/OurMenu";
+// import Checkout from "./Pages/Payment/Checkout";
 import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             </RequireAuth>
           }
         />
+        {/* <Route path="/checkout/:id" element={<Checkout />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         {/* <Route path="/:name" element={<CategoryMenu />} /> */}
