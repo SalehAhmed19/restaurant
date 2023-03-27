@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useCarts from "../Hooks/useCarts";
 import Checkout from "./Payment/Checkout";
 
-const CartItem = ({ cart, setOpen }) => {
+const CartItem = ({ cart, setOpen, setSnackOpen }) => {
   const [layout, setLayout] = useState(undefined);
   const price = cart.price;
   const initialQuantity = cart.quantity;
@@ -61,6 +61,7 @@ const CartItem = ({ cart, setOpen }) => {
             setLayout={setLayout}
             total={total}
             quantity={quantity}
+            setSnackOpen={setSnackOpen}
           />
 
           <button

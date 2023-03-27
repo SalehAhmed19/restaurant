@@ -28,17 +28,9 @@ const Login = () => {
   console.log(user);
   const [token] = useToken(user?.user.email);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate(from, { replace: true });
-  //   }
-  // }, [token, from, navigate]);
   if (token) {
     navigate(from, { replace: true });
   }
-  // if (user) {
-  //   navigate(from, { replace: true });
-  // }
 
   if (loading) {
     return <Loading />;
@@ -46,12 +38,6 @@ const Login = () => {
 
   const onSubmit = async (info) => {
     await signInWithEmailAndPassword(info.email, info.password);
-    // const { data } = await axios.post(
-    //   "https://kayi-tribe-restuarant.onrender.com/api/token",
-    //   {
-    //     email: info.email,
-    //   }
-    // );
   };
 
   return (

@@ -1,20 +1,25 @@
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CategoryMenu from "./Components/Isolated/CategoryMenu";
 import DrawerAppBar from "./Components/Shared/DrawerAppBar";
 import Footer from "./Components/Shared/Footer";
 import NotFound from "./Components/Shared/NotFound";
+import auth from "./firebase.init";
 import Login from "./Pages/Authentication/Login";
 import Registration from "./Pages/Authentication/Registration";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Cart from "./Pages/Cart";
 import FoodDetails from "./Pages/FoodDetails";
 import Home from "./Pages/Home";
+import Orders from "./Pages/Orders";
 import OurMenu from "./Pages/OurMenu";
 // import Checkout from "./Pages/Payment/Checkout";
 import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 
 function App() {
+  const [user] = useAuthState(auth);
+  console.log(user?.email);
   return (
     <div
       className="pt-28 flex flex-col min-h-screen"
@@ -37,6 +42,14 @@ function App() {
           element={
             <RequireAuth>
               <Cart />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <RequireAuth>
+              <Orders />
             </RequireAuth>
           }
         />

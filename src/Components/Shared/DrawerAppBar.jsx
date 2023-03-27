@@ -24,6 +24,7 @@ import auth from "../../firebase.init";
 import LoginRoute from "./LoginRoute";
 import CartRoute from "./CartRoute";
 import HomeRoute from "./HomeRoute";
+import OrderRoute from "./OrderRoute";
 
 const drawerWidth = 240;
 const navItems = [
@@ -130,6 +131,7 @@ function DrawerAppBar(props) {
               </div>
             </Link> */}
             <CartRoute />
+            <OrderRoute />
             {user ? (
               <button
                 onClick={() => {

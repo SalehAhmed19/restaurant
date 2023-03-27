@@ -6,7 +6,7 @@ import { MdOutlinePayment } from "react-icons/md";
 import auth from "../../firebase.init";
 import useCarts from "../../Hooks/useCarts";
 
-const CheckoutForm = ({ cart, total, quantity, setLayout }) => {
+const CheckoutForm = ({ cart, total, quantity, setLayout, setSnackOpen }) => {
   const stripe = useStripe();
   const [carts, setCarts] = useCarts();
   const elements = useElements();
@@ -108,6 +108,7 @@ const CheckoutForm = ({ cart, total, quantity, setLayout }) => {
         }
       });
     setLayout(undefined);
+    setSnackOpen(true);
   };
   return (
     <div>

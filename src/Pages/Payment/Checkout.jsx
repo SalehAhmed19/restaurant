@@ -66,7 +66,14 @@ import { loadStripe } from "@stripe/stripe-js";
 import React, { useState } from "react";
 import CheckoutForm from "./CheckoutForm";
 
-const Checkout = ({ layout, setLayout, cart, total, quantity }) => {
+const Checkout = ({
+  layout,
+  setLayout,
+  cart,
+  total,
+  quantity,
+  setSnackOpen,
+}) => {
   // const elements = useElements();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
   console.log(stripePromise);
@@ -107,6 +114,7 @@ const Checkout = ({ layout, setLayout, cart, total, quantity }) => {
                 total={total}
                 setLayout={setLayout}
                 quantity={quantity}
+                setSnackOpen={setSnackOpen}
               />
             </Elements>
           </ModalDialog>

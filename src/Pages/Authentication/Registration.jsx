@@ -26,6 +26,7 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [createdUserEmail, setCreatedUserEmail] = useState("");
+  console.log("[User]", createdUserEmail);
 
   const [token] = useToken(createdUserEmail);
   console.log(createdUserEmail);

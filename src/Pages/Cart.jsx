@@ -1,4 +1,11 @@
-import { Alert, Box, Collapse, IconButton } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Collapse,
+  IconButton,
+  Slide,
+  Snackbar,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import useCarts from "../Hooks/useCarts";
 import CartItem from "./CartItem";
@@ -10,6 +17,10 @@ import Checkout from "../Pages/Payment/Checkout";
 const Cart = () => {
   const [carts] = useCarts();
   const [open, setOpen] = useState(false);
+  const [snackOpen, setSnackOpen] = useState(false);
+  const handleClose = () => {
+    setTimeout(setSnackOpen(false), 3000);
+  };
   return (
     <div className="p-10 relative">
       <h2 className="text-4xl font-bold mb-5">Cart</h2>
@@ -38,9 +49,14 @@ const Cart = () => {
         {/* <div className="border p-5">
           <Checkout carts={carts} />
         </div> */}
-        {carts.map((cart) => (
+        {carts?.map((cart) => (
           <>
-            <CartItem key={cart._id} cart={cart} setOpen={setOpen} />
+            <CartItem
+              key={cart._id}
+              cart={cart}
+              setOpen={setOpen}
+              setSnackOpen={setSnackOpen}
+            />
           </>
         ))}
         <div className="flex flex-col justify-center items-center">
@@ -52,6 +68,14 @@ const Cart = () => {
           </Link>
         </div>
       </div>
+      <Snackbar
+        open={snackOpen}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        message="Payment Successful and Order Confirmed"
+        // action={action}
+      />
     </div>
   );
 };

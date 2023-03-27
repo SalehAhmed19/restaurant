@@ -1,19 +1,16 @@
-import axios from "axios";
-import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 
-const useCarts = () => {
-  const [carts, setCarts] = useState([]);
+const useOrders = () => {
+  const [orders, setOrders] = useState([]);
   const [user] = useAuthState(auth);
   // const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
       fetch(
-        `https://kayi-tribe-restuarant.onrender.com/api/cart?email=${user?.email}`,
+        `https://kayi-tribe-restuarant.onrender.com/api/orders?email=${user?.email}`,
         {
           method: "GET",
           headers: {
@@ -25,11 +22,11 @@ const useCarts = () => {
           return res.json();
         })
         .then((data) => {
-          setCarts(data);
+          setOrders(data);
         });
     }
-  }, [user, carts]);
-  return [carts, setCarts];
+  }, [user, orders]);
+  return [orders, setOrders];
 };
 
-export default useCarts;
+export default useOrders;
