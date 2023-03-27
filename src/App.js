@@ -1,7 +1,8 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import CategoryMenu from "./Components/Isolated/CategoryMenu";
 import DrawerAppBar from "./Components/Shared/DrawerAppBar";
 import Footer from "./Components/Shared/Footer";
 import NotFound from "./Components/Shared/NotFound";
@@ -67,6 +68,18 @@ function App() {
         {/* <Route path="/:name" element={<CategoryMenu />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Footer />
     </div>
   );

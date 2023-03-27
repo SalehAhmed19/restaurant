@@ -3,6 +3,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { MdOutlinePayment } from "react-icons/md";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import useCarts from "../../Hooks/useCarts";
 
@@ -84,6 +85,7 @@ const CheckoutForm = ({ cart, total, quantity, setLayout, setSnackOpen }) => {
       address: address,
       phone: phone,
       food: cart.food,
+      img: cart.foodImg,
       quantity: quantity,
       price: total,
     };
@@ -108,7 +110,17 @@ const CheckoutForm = ({ cart, total, quantity, setLayout, setSnackOpen }) => {
         }
       });
     setLayout(undefined);
-    setSnackOpen(true);
+    // setSnackOpen(true);
+    toast.success("Order Placed!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <div>

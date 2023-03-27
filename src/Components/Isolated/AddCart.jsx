@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddCart = ({ quantity, setTotal, food, setQuantity }) => {
   const [user] = useAuthState(auth);
@@ -37,6 +38,16 @@ const AddCart = ({ quantity, setTotal, food, setQuantity }) => {
         if (data) {
           setOpen(true);
           setTimeout(() => setOpen(false), 3000);
+          // toast.success("Added to the cart!", {
+          //   position: "top-right",
+          //   autoClose: 2000,
+          //   hideProgressBar: true,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          //   theme: "light",
+          // });
         }
         setTotal(0);
         setQuantity(0);
