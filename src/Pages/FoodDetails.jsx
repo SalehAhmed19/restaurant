@@ -55,21 +55,27 @@ const FoodDetails = () => {
             <span className="font-bold">Quantity: </span>
             {quantity}
           </h4>
-          <div>
-            <button
-              onClick={handleIncrement}
-              className="bg-[#F7C531] py-3 px-5"
-            >
-              <TiPlus className="text-xl" />
-            </button>
-            <button
-              onClick={handleDecrement}
-              className="bg-[#F7C531] py-3 px-5 border-l border-[#F78627]"
-            >
-              <TiMinus className="text-xl" />
-            </button>
+          <div className="grid lg:grid-cols-2 grid-cols-1">
+            <div>
+              <button
+                onClick={handleIncrement}
+                className="bg-[#F7C531] py-3 px-5"
+              >
+                <TiPlus className="text-xl" />
+              </button>
+              <button
+                onClick={handleDecrement}
+                className="bg-[#F7C531] py-3 px-5 border-l border-[#F78627]"
+              >
+                <TiMinus className="text-xl" />
+              </button>
+            </div>
+            <AddCart
+              quantity={quantity}
+              setQuantity={setQuantity}
+              food={food}
+            />
           </div>
-          <AddCart quantity={quantity} setQuantity={setQuantity} food={food} />
         </div>
       </Fade>
     </div>

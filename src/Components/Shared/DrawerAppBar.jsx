@@ -37,6 +37,8 @@ const navItems = [
     url: "popular-dishes",
   },
   { _id: 4, menu: "Our Chief", route: "/chief", url: "chief" },
+  { _id: 5, menu: <OrderRoute /> },
+  { _id: 6, menu: <CartRoute /> },
 ];
 
 function DrawerAppBar(props) {
@@ -106,22 +108,23 @@ function DrawerAppBar(props) {
             <img className="lg:mr-20 w-20 lg:w-[200px]" src={logo} alt="" />
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
-                <Link
-                  to={item.url}
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                  key={item._id}
-                >
-                  <Button
+                <>
+                  <Link
+                    to={item.url}
+                    spy={true}
+                    smooth={true}
+                    offset={-100}
+                    duration={500}
                     key={item._id}
-                    sx={{ color: "#000", margin: "0 20px" }}
                   >
-                    {item.menu}
-                  </Button>
-                </Link>
+                    <Button key={item._id} sx={{ color: "#000" }}>
+                      {item.menu}
+                    </Button>
+                  </Link>
+                </>
               ))}
+              {/* <CartRoute />
+              <OrderRoute /> */}
             </Box>
           </div>
           <div className="flex">
@@ -130,8 +133,8 @@ function DrawerAppBar(props) {
                 <AiOutlineShopping className="text-2xl" />
               </div>
             </Link> */}
-            <CartRoute />
-            <OrderRoute />
+            {/* <CartRoute />
+            <OrderRoute /> */}
             {user ? (
               <button
                 onClick={() => {

@@ -10,7 +10,7 @@ const CartRoute = () => {
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -3,
-      top: 13,
+      top: 0,
       border: `2px solid ${theme.palette.background.paper}`,
       padding: "0 4px",
     },

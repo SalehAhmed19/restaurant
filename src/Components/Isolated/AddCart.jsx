@@ -75,12 +75,6 @@ const AddCart = ({ quantity, setTotal, food, setQuantity }) => {
           <BsCartCheck className="lg:mr-3" />
           Add to Cart
         </button>
-        <Link to="/checkout">
-          <button className="bg-[#000] text-[#fff] px-5 py-3 m-2 flex justify-between items-center">
-            <MdOutlinePayment className="lg:mr-3" />
-            Proceed Payment
-          </button>
-        </Link>
       </div>
     </div>
   );
