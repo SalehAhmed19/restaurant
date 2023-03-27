@@ -32,7 +32,7 @@ const navItems = [
   { _id: 2, menu: "About", route: "/about", url: "about" },
   {
     _id: 3,
-    menu: "Most Popular Dishes",
+    menu: "Popular Dish",
     route: "/popular-dishes",
     url: "popular-dishes",
   },

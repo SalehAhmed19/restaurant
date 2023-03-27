@@ -1,6 +1,6 @@
 import { Badge, IconButton } from "@mui/material";
 import React from "react";
-import { AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import useCarts from "../../Hooks/useCarts";
@@ -24,7 +24,7 @@ const CartRoute = () => {
             aria-label="cart"
           >
             <StyledBadge badgeContent={carts?.length} color="warning">
-              <AiOutlineShopping />
+              <AiOutlineShoppingCart />
             </StyledBadge>
           </IconButton>
         </Link>
