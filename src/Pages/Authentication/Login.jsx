@@ -47,7 +47,7 @@ const Login = () => {
   const onSubmit = async (info) => {
     await signInWithEmailAndPassword(info.email, info.password);
     // const { data } = await axios.post(
-    //   "http://localhost:4000/api/token",
+    //   "https://kayi-tribe-restuarant.onrender.com/api/token",
     //   {
     //     email: info.email,
     //   }

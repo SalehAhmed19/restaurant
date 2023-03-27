@@ -20,14 +20,17 @@ const CheckoutForm = ({ cart, total, quantity, setLayout }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:4000/api/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price: total }),
-    })
+    fetch(
+      "https://kayi-tribe-restuarant.onrender.com/api/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price: total }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [total]);
@@ -84,7 +87,7 @@ const CheckoutForm = ({ cart, total, quantity, setLayout }) => {
       quantity: quantity,
       price: total,
     };
-    fetch("http://localhost:4000/api/make-order", {
+    fetch("https://kayi-tribe-restuarant.onrender.com/api/make-order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(order),
@@ -94,7 +97,7 @@ const CheckoutForm = ({ cart, total, quantity, setLayout }) => {
         console.log(data);
       });
 
-    fetch(`http://localhost:4000/api/cart/${cart._id}`, {
+    fetch(`https://kayi-tribe-restuarant.onrender.com/api/cart/${cart._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

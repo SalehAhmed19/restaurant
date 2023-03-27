@@ -21,11 +21,14 @@ const SignInWithGoogle = ({ email }) => {
     await signInWithGoogle();
     const currentUser = { email: user?.user.email };
     console.log(currentUser);
-    fetch(`http://localhost:4000/api/users/${user.user.email}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(currentUser),
-    })
+    fetch(
+      `https://kayi-tribe-restuarant.onrender.com/api/users/${user.user.email}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(currentUser),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -34,7 +37,7 @@ const SignInWithGoogle = ({ email }) => {
   // }, [token, from, navigate]);
   // const saveUser = (email) => {
   //   const user = { email: email };
-  //   fetch(`http://localhost:4000/api/users/${email}`, {
+  //   fetch(`https://kayi-tribe-restuarant.onrender.com/api/users/${email}`, {
   //     method: "PUT",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(user),

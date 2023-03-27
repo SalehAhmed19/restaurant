@@ -20,13 +20,13 @@ const FoodDetails = () => {
     }
   };
   useEffect(() => {
-    fetch(`http://localhost:4000/api/desserts/${id}`)
+    fetch(`https://kayi-tribe-restuarant.onrender.com/api/desserts/${id}`)
       .then((res) => res.json())
       .then((data) => setFood(data));
-    fetch(`http://localhost:4000/api/drinks/${id}`)
+    fetch(`https://kayi-tribe-restuarant.onrender.com/api/drinks/${id}`)
       .then((res) => res.json())
       .then((data) => setFood(data));
-    fetch(`http://localhost:4000/api/main/${id}`)
+    fetch(`https://kayi-tribe-restuarant.onrender.com/api/main/${id}`)
       .then((res) => res.json())
       .then((data) => setFood(data));
   }, []);

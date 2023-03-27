@@ -12,12 +12,15 @@ const useCarts = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:4000/api/cart?email=${user?.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://kayi-tribe-restuarant.onrender.com/api/cart?email=${user?.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => {
           return res.json();
         })

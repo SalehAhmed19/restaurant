@@ -27,7 +27,7 @@ const AddCart = ({ quantity, setTotal, food, setQuantity }) => {
       price: parseInt(food?.price),
       customerEmail: user?.email,
     };
-    fetch("http://localhost:4000/api/cart", {
+    fetch("https://kayi-tribe-restuarant.onrender.com/api/cart", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(item),

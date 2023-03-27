@@ -9,7 +9,7 @@
 // //   const handleCheckout = () => {
 // //     console.log(carts);
 // //     axios
-// //       .post("http://localhost:4000/api/create-checkout-session", {
+// //       .post("https://kayi-tribe-restuarant.onrender.com/api/create-checkout-session", {
 // //         carts: carts,
 // //         user: user.email,
 // //       })
@@ -44,13 +44,13 @@
 //   const { id } = useParams();
 //   const [item, setItem] = useState({});
 //   useEffect(() => {
-//     fetch(`http://localhost:4000/api/desserts/${id}`)
+//     fetch(`https://kayi-tribe-restuarant.onrender.com/api/desserts/${id}`)
 //       .then((res) => res.json())
 //       .then((data) => setItem(data));
-//     fetch(`http://localhost:4000/api/drinks/${id}`)
+//     fetch(`https://kayi-tribe-restuarant.onrender.com/api/drinks/${id}`)
 //       .then((res) => res.json())
 //       .then((data) => setItem(data));
-//     fetch(`http://localhost:4000/api/main/${id}`)
+//     fetch(`https://kayi-tribe-restuarant.onrender.com/api/main/${id}`)
 //       .then((res) => res.json())
 //       .then((data) => setItem(data));
 //   }, [id]);
