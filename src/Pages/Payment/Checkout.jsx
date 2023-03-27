@@ -100,7 +100,7 @@ const Checkout = ({
               <div>
                 <h2 className="text-center text-xl font-bold">{cart.food}</h2>
                 <h4 className="text-center ">
-                  <span className="font-bold">Total Price: </span>${total}
+                  <span className="font-bold">Total Price: </span>&#2547;{total}
                 </h4>
                 <h4 className="text-center ">
                   <span className="font-bold">Quantity: </span>

@@ -42,7 +42,7 @@ const FoodDetails = () => {
           <h2 className="text-4xl font-bold">{food.name}</h2>
           <p className="text-[#6F6F87] my-5">{food.des}</p>
           <h4 className="text-3xl mb-5 font-bold">
-            <span className="font-normal text-sm">$</span>
+            <span className="font-normal text-sm">&#2547;</span>
             {food.price}
           </h4>
           <Rating

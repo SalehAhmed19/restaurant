@@ -15,7 +15,7 @@ const DishCard = ({ dish }) => {
         <h4 className="font-bold mx-5">{dish.name.slice(0, 15) + "..."}</h4>
         <div className="bg-[#F5C332] h-14 w-14 flex justify-center items-center">
           <h4 className="text-xl font-bold">
-            <span className="text-sm font-normal">$</span>
+            <span className="text-sm font-normal">&#2547;</span>
             {dish.price}
           </h4>
         </div>
