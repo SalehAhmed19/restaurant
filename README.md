@@ -1,4 +1,4 @@
-# Kayi Tribe Restaurant
+# [Kayi Tribe Restaurant](https://restaurants-e7203.web.app/)
 
 Kayi Tribe Restaurant is a full-stack web application built with the MERN stack, which includes MongoDB, Express, React, and Node.js. The frontend of the application is developed using React along with Material-UI (mui) and TailwindCSS for styling, while the backend is developed using Node.js and Express. MongoDB is used as the database for the application.
 
