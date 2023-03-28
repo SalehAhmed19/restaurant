@@ -56,11 +56,11 @@ const Categories = () => {
       </Fade>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {categories.map((category) => (
-          <Link to={category.name}>
-            <Zoom>
-              <Category key={category._id} category={category} />
-            </Zoom>
-          </Link>
+          // <Link to={category.name}>
+          <Zoom>
+            <Category key={category._id} category={category} />
+          </Zoom>
+          // </Link>
         ))}
       </div>
     </div>

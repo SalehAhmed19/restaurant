@@ -13,7 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import logo from "../../Assets/logo.svg";
+import logo from "../../Assets/kayi.png";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { Link } from "react-scroll";

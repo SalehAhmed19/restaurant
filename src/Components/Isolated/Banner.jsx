@@ -1,5 +1,5 @@
 import React from "react";
-import girl from "../../Assets/girl.png";
+import food from "../../Assets/food.png";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { CiPizza, CiBurger } from "react-icons/ci";
 import { GiCakeSlice } from "react-icons/gi";
@@ -12,7 +12,7 @@ const Banner = () => {
   return (
     <div
       style={{ background: `url(${bg})`, backgroundSize: "cover" }}
-      className="lg:px-24 px-5 h-screen"
+      className="lg:px-24 px-5 h-screen pt-5"
     >
       <Fade down>
         <p className="bg-[#F2F3F5] inline-block p-1 text-sm">Hi, new friend!</p>
@@ -33,12 +33,14 @@ const Banner = () => {
                   <img className="mr-3" src={menu} alt="" /> Our Menu
                 </button>
               </Link>
-              <button className="flex items-center lg:px-6 px-3 bg-[#fff] lg:py-2 mx-5">
-                <div className="bg-[#F2F3F5] h-10 w-10 rounded-full flex justify-center items-center mr-4">
-                  <BsArrowUpRightCircle className="text-xl" />
-                </div>{" "}
-                About Us
-              </button>
+              <Link to="/about">
+                <button className="flex items-center lg:px-6 px-3 bg-[#fff] lg:py-2 mx-5">
+                  <div className="bg-[#F2F3F5] h-10 w-10 rounded-full flex justify-center items-center mr-4">
+                    <BsArrowUpRightCircle className="text-xl" />
+                  </div>{" "}
+                  About Us
+                </button>
+              </Link>
             </div>
           </div>
         </Fade>
@@ -59,7 +61,7 @@ const Banner = () => {
             </div>
           </Zoom>
           <Zoom>
-            <img className="rounded-full w-[500px]" src={girl} alt="" />
+            <img className="w-[600px]" src={food} alt="" />
           </Zoom>
         </div>
       </div>

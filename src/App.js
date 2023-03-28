@@ -7,6 +7,7 @@ import DrawerAppBar from "./Components/Shared/DrawerAppBar";
 import Footer from "./Components/Shared/Footer";
 import NotFound from "./Components/Shared/NotFound";
 import auth from "./firebase.init";
+import About from "./Pages/About";
 import Login from "./Pages/Authentication/Login";
 import Registration from "./Pages/Authentication/Registration";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/our-menu" element={<OurMenu />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/our-menu/:id"
           element={

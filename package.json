@@ -5,9 +5,11 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@material-ui/styles": "^4.11.5",
     "@mui/icons-material": "^5.11.11",
     "@mui/joy": "^5.0.0-alpha.70",
     "@mui/material": "^5.11.12",
+    "@mui/styles": "^5.11.13",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.0",
     "@testing-library/jest-dom": "^5.16.5",

@@ -1,13 +1,15 @@
 import React from "react";
 import { Fade } from "react-reveal";
-import logo from "../../Assets/logo.svg";
+import logo from "../../Assets/kayi.png";
 
 const Footer = () => {
   return (
     <Fade up>
       <div className="p-10 flex flex-col lg:flex-row items-center justify-between mt-auto border-t">
-        <img src={logo} alt="" />
-        <p>&copy; All Rights Reserved by Saleh Ahmed Mahin</p>
+        <img className="w-36" src={logo} alt="" />
+        <div>
+          <p>&copy; All Rights Reserved</p>
+        </div>
       </div>
     </Fade>
   );

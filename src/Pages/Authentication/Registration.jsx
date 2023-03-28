@@ -60,37 +60,22 @@ const Register = () => {
         setCreatedUserEmail(info.email);
       });
   };
-
-  // const saveUser = (email) => {
-  //   const user = { email: email };
-  //   fetch(`https://kayi-tribe-restuarant.onrender.com/api/users/${email}`, {
-  //     method: "PUT",
-  //     headers: { "content-type": "application/json" },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       navigate("/");
-  //     });
-  // };
-
   return (
-    <div className="flex justify-between mx-20 items-center">
-      <div className="flex">
-        <Zoom>
+    <div className="flex flex-col lg:flex-row justify-between lg:mx-20 items-center pt-10">
+      <div className="">
+        {/* <Zoom>
           <img className="w-80" src={avatar} alt="" />
-        </Zoom>
+        </Zoom> */}
         <div>
           <Bounce>
-            <h2 className="text-6xl font-bold text-right pt-40">
+            <h2 className="lg:text-6xl text-3xl font-bold text-right">
               Register Now!
             </h2>
           </Bounce>
         </div>
       </div>
       <Fade right>
-        <div className="bg-[#F9FAFC] w-1/3 p-5">
+        <div className="bg-[#F9FAFC] lg:w-1/3 p-5">
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               {...register("name", { required: true })}
@@ -164,7 +149,7 @@ const Register = () => {
             />
           </form>
           <div>
-            <div className="h-1 w-full bg-[#64646541]"></div>
+            <div className="h-[2px] rounded-full w-full bg-[#ebebec]"></div>
             <SignInWithGoogle />
           </div>
         </div>

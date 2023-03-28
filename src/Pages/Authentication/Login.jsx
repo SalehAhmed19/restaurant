@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Bounce, Fade, Zoom } from "react-reveal";
-import avatar from "../../Assets/login.png";
+import logo from "../../Assets/kayi.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SignInWithGoogle from "./SignInWithGoogle";
 import { useForm } from "react-hook-form";
@@ -41,19 +41,21 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-between mx-20 items-center">
-      <div className="flex">
-        <Zoom>
-          <img className="w-80" src={avatar} alt="" />
-        </Zoom>
+    <div className="flex flex-col lg:flex-row justify-between lg:mx-20 items-center pt-10">
+      <div className="">
+        {/* <Zoom>
+          <img className="w-80" src={logo} alt="" />
+        </Zoom> */}
         <div>
           <Bounce>
-            <h2 className="text-6xl font-bold text-right pt-40">Login Now!</h2>
+            <h2 className="lg:text-6xl text-3xl font-bold text-right">
+              Login Now!
+            </h2>
           </Bounce>
         </div>
       </div>
       <Fade right>
-        <div className="bg-[#F9FAFC] w-1/3 p-5">
+        <div className="bg-[#F9FAFC] lg:w-1/3 p-5">
           <form action="" onSubmit={handleSubmit(onSubmit)}>
             <TextField
               {...register("email", { required: true })}
@@ -96,7 +98,7 @@ const Login = () => {
             />
           </form>
           <div>
-            <div className="h-1 w-full bg-[#64646541]"></div>
+            <div className="h-[2px] rounded-full w-full bg-[#ebebec]"></div>
             <SignInWithGoogle />
           </div>
         </div>
