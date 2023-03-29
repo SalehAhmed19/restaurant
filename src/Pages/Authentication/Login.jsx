@@ -25,7 +25,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  console.log(user);
+  // console.log(user);
   const [token] = useToken(user?.user.email);
 
   if (token) {

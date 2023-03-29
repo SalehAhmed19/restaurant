@@ -20,7 +20,7 @@ const SignInWithGoogle = ({ email }) => {
   const handleGoogleSigIn = async () => {
     await signInWithGoogle();
     const currentUser = { email: user?.user.email };
-    console.log(currentUser);
+    // console.log(currentUser);
     fetch(
       `https://kayi-tribe-restuarant.onrender.com/api/users/${user.user.email}`,
       {
@@ -31,26 +31,9 @@ const SignInWithGoogle = ({ email }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
   };
-  // }, [token, from, navigate]);
-  // const saveUser = (email) => {
-  //   const user = { email: email };
-  //   fetch(`https://kayi-tribe-restuarant.onrender.com/api/users/${email}`, {
-  //     method: "PUT",
-  //     headers: { "content-type": "application/json" },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       navigate("/");
-  //     });
-  // };
-  // if (user) {
-  //   navigate(from, { replace: true });
-  // }
   if (loading) {
     return <Loading />;
   }
