@@ -20,7 +20,6 @@ const SignInWithGoogle = ({ email }) => {
   const handleGoogleSigIn = async () => {
     await signInWithGoogle();
     const currentUser = { email: user?.user.email };
-    // console.log(currentUser);
     fetch(
       `https://kayi-tribe-restuarant.onrender.com/api/users/${user.user.email}`,
       {
@@ -30,9 +29,7 @@ const SignInWithGoogle = ({ email }) => {
       }
     )
       .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-      });
+      .then((data) => {});
   };
   if (loading) {
     return <Loading />;

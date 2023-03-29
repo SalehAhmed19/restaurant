@@ -26,18 +26,11 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [createdUserEmail, setCreatedUserEmail] = useState("");
-  // console.log("[User]", createdUserEmail);
 
   const [token] = useToken(createdUserEmail);
-  // console.log(createdUserEmail);
-  // useEffect(() => {
   if (token) {
     navigate(from, { replace: true });
   }
-  // }, [token, from, navigate]);
-  // if (user) {
-  //   navigate(from, { replace: true });
-  // }
 
   if (loading) {
     return <Loading />;

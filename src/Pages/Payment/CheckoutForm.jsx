@@ -56,9 +56,7 @@ const CheckoutForm = ({ cart, total, quantity, setLayout, setSnackOpen }) => {
     });
 
     if (error) {
-      // console.log("[error]", error);
     } else {
-      // console.log("[PaymentMethod]", paymentMethod);
     }
 
     const { paymentIntent, error: confirmError } =
@@ -75,10 +73,9 @@ const CheckoutForm = ({ cart, total, quantity, setLayout, setSnackOpen }) => {
       });
 
     if (confirmError) {
-      // console.log("[ConfirmError]", confirmError);
       return;
     }
-    // console.log("[paymentIntent]", paymentIntent);
+
     const order = {
       customer: fullName,
       email: email,
@@ -95,9 +92,7 @@ const CheckoutForm = ({ cart, total, quantity, setLayout, setSnackOpen }) => {
       body: JSON.stringify(order),
     })
       .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-      });
+      .then((data) => {});
 
     fetch(`https://kayi-tribe-restuarant.onrender.com/api/cart/${cart._id}`, {
       method: "DELETE",

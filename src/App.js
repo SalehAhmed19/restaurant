@@ -21,7 +21,6 @@ import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 
 function App() {
   const [user] = useAuthState(auth);
-  // console.log(user?.email);
   return (
     <div
       className="pt-28 flex flex-col min-h-screen"
